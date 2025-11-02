@@ -50,26 +50,24 @@
     <main v-else class="max-w-5xl mx-auto px-6 py-12">
       <article class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100">
         <!-- Post Header -->
-        <div class="p-8 lg:p-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <div class="px-8 pt-8 pb-4 lg:px-12 lg:pt-12 lg:pb-6 border-b border-gray-200">
           <div class="mb-6">
-            <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center space-x-3">
-                <p class="text-blue-100">{{ formatDate(post.frontmatter.date) }}</p>
-                <span class="text-blue-100">•</span>
-                <p class="text-blue-100 text-sm">{{ calculateReadTime(post.html) }} min read</p>
-              </div>
+            <div class="flex items-center space-x-3 mb-6">
+              <p class="text-sm text-gray-600">{{ formatDate(post.frontmatter.date) }}</p>
+              <span class="text-gray-400">•</span>
+              <p class="text-sm text-blue-600 font-medium">{{ calculateReadTime(post.html) }} min read</p>
             </div>
             
-            <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
               {{ post.frontmatter.title }}
             </h1>
-            <p class="text-xl lg:text-2xl text-blue-100 mb-6 leading-relaxed">{{ post.frontmatter.excerpt }}</p>
+            <p class="text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed">{{ post.frontmatter.excerpt }}</p>
             
             <div class="flex flex-wrap gap-3">
               <span 
                 v-for="tag in post.frontmatter.tags" 
                 :key="tag"
-                class="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full backdrop-blur-sm border border-white/30"
+                class="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full border border-blue-200"
               >
                 # {{ tag }}
               </span>
@@ -78,10 +76,10 @@
         </div>
 
         <!-- Post Content -->
-        <div class="p-8 lg:p-12">
+        <div class="px-8 pt-4 pb-8 lg:px-12 lg:pt-6 lg:pb-12">
           <div 
             ref="contentRef"
-            class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-strong:text-gray-800 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto"
+            class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-headings:mb-3 prose-p:text-gray-700 prose-p:leading-normal prose-p:mb-3 prose-a:text-blue-600 prose-strong:text-gray-800 prose-ul:my-3 prose-ol:my-3 prose-li:my-1 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto prose-pre:my-4"
             v-html="post.html"
           ></div>
         </div>
