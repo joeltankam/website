@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
     <!-- Navigation Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100 sticky top-0 z-10">
+    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100 sticky top-0 z-10 transition-all duration-300">
       <div class="max-w-6xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <router-link 
@@ -14,9 +14,15 @@
             <span>Back to Blog</span>
           </router-link>
           
-          <div class="text-right">
-            <h2 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">My Blog</h2>
-            <p class="text-sm text-blue-600">Web Development & Technology</p>
+          <!-- Dynamic content that appears when scrolled -->
+          <div 
+            v-if="post && isScrolled"
+            class="text-right flex-1 mx-4 overflow-hidden transition-all duration-300"
+          >
+            <h2 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent truncate">
+              {{ post.frontmatter.title }}
+            </h2>
+            <p class="text-sm text-gray-500">{{ formatDate(post.frontmatter.date) }}</p>
           </div>
         </div>
       </div>
@@ -111,7 +117,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, nextTick } from 'vue'
+import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -150,6 +156,13 @@ const props = defineProps<Props>()
 const post = ref<BlogPost | null>(null)
 const loading = ref(true)
 const contentRef = ref<HTMLElement | null>(null)
+const isScrolled = ref(false)
+
+// Scroll detection
+const handleScroll = () => {
+  // Show banner content when scrolled down more than 200px
+  isScrolled.value = window.scrollY > 200
+}
 
 const socialPlatforms = [
   {
@@ -234,7 +247,14 @@ const sharePost = (platform: string) => {
   window.open(shareUrl, '_blank', 'width=600,height=400')
 }
 
-onMounted(loadPost)
+onMounted(() => {
+  loadPost()
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 watch(() => props.slug, loadPost)
 
 // Watch for post changes and apply highlighting

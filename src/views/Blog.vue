@@ -1,27 +1,22 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-    <!-- Hero Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-md border-b border-blue-100">
-      <div class="max-w-6xl mx-auto px-6 py-6">
+    <!-- Navigation Header -->
+    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100 sticky top-0 z-10">
+      <div class="max-w-6xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <router-link 
-            to="/"
-            class="inline-flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
+            to="/" 
+            class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
             <span>Home</span>
           </router-link>
           
-          <div class="text-center flex-1">
-            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Blog
-            </h1>
-          </div>
-          
-          <div class="text-xs text-gray-500">
-            {{ filteredPosts.length }} / {{ allPosts.length }}
+          <div class="text-right">
+            <h2 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Blog</h2>
+            <p class="text-sm text-gray-500">{{ filteredPosts.length }} / {{ allPosts.length }} articles</p>
           </div>
         </div>
       </div>
