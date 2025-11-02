@@ -76,7 +76,6 @@ npm run preview
 title: "Your Post Title"
 date: "2025-01-15"
 excerpt: "Brief description of your post"
-author: "Your Name"
 tags: ["tag1", "tag2", "tag3"]
 ---
 
@@ -86,6 +85,8 @@ Write your blog post content here using markdown syntax.
 ```
 
 3. The blog will automatically detect and display the new post
+
+**Note:** The `author` field is optional and not displayed since this is a personal blog.
 
 ## Social Media Sharing
 

@@ -53,15 +53,10 @@
         <div class="p-8 lg:p-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
           <div class="mb-6">
             <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center space-x-4">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <span class="text-white font-bold text-2xl">{{ post.frontmatter.author[0].toUpperCase() }}</span>
-                </div>
-                <div>
-                  <p class="font-semibold text-white text-lg">{{ post.frontmatter.author }}</p>
-                  <p class="text-blue-100">{{ formatDate(post.frontmatter.date) }}</p>
-                  <p class="text-blue-100 text-sm">{{ calculateReadTime(post.html) }} minute read</p>
-                </div>
+              <div class="flex items-center space-x-3">
+                <p class="text-blue-100">{{ formatDate(post.frontmatter.date) }}</p>
+                <span class="text-blue-100">•</span>
+                <p class="text-blue-100 text-sm">{{ calculateReadTime(post.html) }} min read</p>
               </div>
             </div>
             

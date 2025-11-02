@@ -1,29 +1,27 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
     <!-- Hero Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100">
-      <div class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center">
+    <header class="bg-white/80 backdrop-blur-sm shadow-md border-b border-blue-100">
+      <div class="max-w-6xl mx-auto px-6 py-6">
+        <div class="flex items-center justify-between">
           <router-link 
             to="/"
-            class="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 mb-6 transition-colors"
+            class="inline-flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            <span>Back to Home</span>
+            <span>Home</span>
           </router-link>
-          <h1 class="text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-            My Blog
-          </h1>
-          <p class="text-xl text-blue-700 max-w-2xl mx-auto leading-relaxed">
-            Exploring the world of web development, technology insights, and creative coding adventures
-          </p>
-          <div class="mt-8 flex justify-center space-x-4">
-            <div class="flex items-center space-x-2 px-4 py-2 bg-blue-100 rounded-full">
-              <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-              <span class="text-blue-700 font-medium">{{ filteredPosts.length }} of {{ allPosts.length }} Articles</span>
-            </div>
+          
+          <div class="text-center flex-1">
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Blog
+            </h1>
+          </div>
+          
+          <div class="text-xs text-gray-500">
+            {{ filteredPosts.length }} / {{ allPosts.length }}
           </div>
         </div>
       </div>
@@ -241,14 +239,8 @@
               <div class="p-6">
                 <!-- Post Meta -->
                 <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
-                  <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span class="text-white font-bold text-sm">{{ post.frontmatter.author[0].toUpperCase() }}</span>
-                    </div>
-                    <div>
-                      <p class="font-medium text-gray-800 text-sm">{{ post.frontmatter.author }}</p>
-                      <p class="text-xs text-blue-600">{{ formatDate(post.frontmatter.date) }}</p>
-                    </div>
+                  <div class="text-xs text-blue-600">
+                    {{ formatDate(post.frontmatter.date) }}
                   </div>
                   <div class="flex flex-wrap gap-2">
                     <button
@@ -280,6 +272,7 @@
                 <!-- Read More Button -->
                 <div class="flex justify-between items-center">
                   <router-link 
+                    v-if="index === 0 && !searchQuery && selectedTags.length === 0"
                     :to="`/post/${post.slug}`"
                     class="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
@@ -288,7 +281,7 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>
                   </router-link>
-                  <div class="text-xs text-gray-500">
+                  <div :class="index === 0 && !searchQuery && selectedTags.length === 0 ? 'text-xs text-gray-500' : 'text-xs text-gray-500 ml-auto'">
                     {{ calculateReadTime(post.html) }} min read
                   </div>
                 </div>
@@ -388,8 +381,7 @@ const filteredPosts = computed(() => {
       const titleMatch = post.frontmatter.title.toLowerCase().includes(query)
       const excerptMatch = post.frontmatter.excerpt.toLowerCase().includes(query)
       const contentMatch = post.html.toLowerCase().includes(query)
-      const authorMatch = post.frontmatter.author.toLowerCase().includes(query)
-      return titleMatch || excerptMatch || contentMatch || authorMatch
+      return titleMatch || excerptMatch || contentMatch
     })
   }
 
