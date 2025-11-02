@@ -229,9 +229,14 @@
           <!-- Posts Grid -->
           <div v-if="filteredPosts.length > 0" class="grid grid-cols-1 gap-6">
             <article 
-              v-for="post in filteredPosts" 
+              v-for="(post, index) in filteredPosts" 
               :key="post.slug"
-              class="group bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-blue-100 hover:border-blue-300 hover:-translate-y-2"
+              :class="[
+                'group bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2',
+                index === 0 && !searchQuery && selectedTags.length === 0 && isPostRecent(post.frontmatter.date)
+                  ? 'border-blue-400 border-2 shadow-xl bg-gradient-to-br from-white/90 to-blue-50/70'
+                  : 'border-blue-100 hover:border-blue-300'
+              ]"
             >
               <div class="p-6">
                 <!-- Post Meta -->
@@ -426,6 +431,13 @@ const formatDate = (dateString: string): string => {
     month: 'long',
     day: 'numeric'
   })
+}
+
+const isPostRecent = (dateString: string): boolean => {
+  const postDate = new Date(dateString)
+  const now = new Date()
+  const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate())
+  return postDate >= oneMonthAgo
 }
 
 const calculateReadTime = (html: string): number => {
