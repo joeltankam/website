@@ -111,57 +111,60 @@
         <div class="space-y-6">
           <!-- Current Role -->
           <div class="border-l-4 border-blue-600 pl-6">
-            <h3 class="text-xl font-bold text-gray-800">R&D Software Engineer & Technical Lead</h3>
-            <p class="text-blue-600 font-medium mb-3">Société Générale Corporate & Investment Banking • 2018 - Present</p>
+            <h3 class="text-xl font-bold text-gray-800">R&D Software Engineer</h3>
+            <p class="text-blue-600 font-medium mb-3">Société Générale CIB • Jan 2024 - Present • Paris, France</p>
             <p class="text-gray-700 leading-relaxed mb-4">
-              Leading technical initiatives across the organization, specializing in cloud architecture, .NET ecosystem expertise, and large-scale system migrations. Currently building a multi-cloud real-time market data delivery system while managing enterprise-wide technology transformations.
+              Building a multi-cloud system to provide real-time market data. Maintaining and improving microservices, designing and implementing new architecture, managing CI/CD pipelines, stakeholder management, and providing technical and functional support for clients.
             </p>
             <div class="grid md:grid-cols-2 gap-3 text-sm text-gray-600">
               <div class="flex items-start">
                 <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Cloud computing design & architecture (Azure, Kubernetes)</span>
+                <span>Maintaining and improving microservices</span>
               </div>
               <div class="flex items-start">
                 <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Led .NET Core migration across hundreds of applications</span>
+                <span>Designing and implementing new architecture</span>
               </div>
               <div class="flex items-start">
                 <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Developed CI/CD tools & automation frameworks</span>
+                <span>Responsible for CI/CD pipelines</span>
               </div>
               <div class="flex items-start">
                 <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Applied ML techniques to optimize build pipelines</span>
+                <span>Stakeholder management</span>
               </div>
               <div class="flex items-start">
                 <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Technical mentorship & team coordination</span>
-              </div>
-              <div class="flex items-start">
-                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>Speaker on advanced .NET topics</span>
+                <span>Technical & functional support for clients</span>
               </div>
             </div>
           </div>
 
-          <!-- Previous Experience -->
+          <!-- 2020-2023 Role -->
           <div class="border-l-4 border-gray-300 pl-6">
-            <h3 class="text-lg font-bold text-gray-800">Web Development & Consulting</h3>
-            <p class="text-gray-600 font-medium mb-2">Multiple Startups • 2016 - 2017</p>
+            <h3 class="text-lg font-bold text-gray-800">R&D Software Engineer</h3>
+            <p class="text-gray-600 font-medium mb-2">Société Générale CIB • Nov 2020 - Dec 2023 • Paris, France</p>
             <p class="text-gray-700 text-sm">
-              Full-stack development and UX consulting for startups, delivering end-to-end web solutions using PHP, Laravel, Python, Django, JavaScript, and Vue.js.
+              Led .NET Core migration in a vast ecosystem. Project manager and technical lead, developed CI/CD and efficiency tools, speaker on various .NET in-depth topics, mentorship and new technology monitoring.
+            </p>
+          </div>
+
+          <!-- 2018-2020 Morocco -->
+          <div class="border-l-4 border-gray-300 pl-6">
+            <h3 class="text-lg font-bold text-gray-800">R&D Software Engineer</h3>
+            <p class="text-gray-600 font-medium mb-2">Société Générale ATS • Aug 2018 - Nov 2020 • Casablanca, Morocco</p>
+            <p class="text-gray-700 text-sm">
+              Built and maintained productivity tools and frameworks for developers. Project manager and technical lead of .NET Core migration, monitored and improved software factory, provided technical support.
             </p>
           </div>
         </div>
@@ -171,40 +174,25 @@
       <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 lg:p-12 shadow-2xl border border-blue-100 mb-8">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">My Approach & Interests</h2>
         
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 class="text-lg font-semibold text-blue-600 mb-2">Technical Excellence</h3>
-            <p class="text-gray-600">I believe in writing clean, maintainable code that scales. Every line should serve a purpose and be understandable to the next engineer.</p>
+            <h3 class="text-lg font-semibold text-blue-600 mb-2">Leadership & Mentorship</h3>
+            <p class="text-gray-600">Great teams are built through guidance and support. Empowering others and sharing knowledge creates strong, collaborative engineering cultures where everyone can thrive.</p>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-blue-600 mb-2">Collaborative Leadership</h3>
-            <p class="text-gray-600">Great software is built by great teams. I value mentorship, knowledge sharing, and creating environments where everyone can grow.</p>
+            <h3 class="text-lg font-semibold text-blue-600 mb-2">Attention to Detail</h3>
+            <p class="text-gray-600">Quality matters at every level. Clean, maintainable code and high standards across architecture and implementation ensure long-term success and sustainability.</p>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-blue-600 mb-2">Continuous Learning</h3>
-            <p class="text-gray-600">Technology evolves rapidly. I stay current through experimentation, reading, and contributing to technical communities.</p>
+            <h3 class="text-lg font-semibold text-blue-600 mb-2">Project Management</h3>
+            <p class="text-gray-600">Complex projects succeed through planning and clear communication, while maintaining flexibility to adapt. Human relations are at the heart of effective delivery—balancing quality, timelines, and team morale creates sustainable success.</p>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-blue-600 mb-2">Pragmatic Solutions</h3>
-            <p class="text-gray-600">The best solution isn't always the most complex. I focus on solving real problems with appropriate technology choices.</p>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="text-lg font-semibold text-blue-600 mb-3">Beyond Code</h3>
-          <p class="text-gray-600 mb-3">When I'm not engineering software, you'll find me exploring:</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Technology & Science</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Travel & Cultures</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Books & Literature</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Art & Design</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Sports & Fitness</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Gaming</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Movies & Cinema</span>
-            <span class="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm">Japanese Animation & Manga</span>
+            <h3 class="text-lg font-semibold text-blue-600 mb-2">Knowledge Sharing</h3>
+            <p class="text-gray-600">Technology thrives on collaboration. Technical talks, documentation, and mentoring help teams stay current and foster continuous improvement across organizations.</p>
           </div>
         </div>
       </div>
