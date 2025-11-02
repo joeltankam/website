@@ -28,7 +28,16 @@
         <h1 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6">
           About Me
         </h1>
+        
         <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
+          <!-- Profile Picture - floated left -->
+          <img 
+            src="../assets/me.jpg" 
+            alt="Joël Tankam" 
+            @click="showZoomedImage = true"
+            class="float-left mr-6 mb-4 w-80 h-80 rounded-2xl object-cover shadow-lg border-4 border-blue-100 cursor-pointer hover:scale-105 transition-transform duration-300"
+          />
+          
           <p>
             Hi, I'm <span class="font-bold text-xl text-blue-600">Joël Tankam</span> — a <span class="font-semibold text-gray-800">curious and multilingual individual</span> who has been passionate about technology and exploration since a young age. Born in <span class="font-semibold text-gray-800">Cameroon</span>, I left at 14 after graduating high school to pursue my studies in <span class="font-semibold text-gray-800">Morocco</span>, where I would spend the next several years discovering a new culture and building the foundations of my future.
           </p>
@@ -253,11 +262,27 @@
         </div>
       </div>
     </main>
+    
+    <!-- Zoom Modal -->
+    <div 
+      v-if="showZoomedImage"
+      @click="showZoomedImage = false"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 cursor-zoom-out"
+    >
+      <img 
+        src="../assets/me.jpg" 
+        alt="Joël Tankam" 
+        class="max-w-full max-h-full rounded-2xl shadow-2xl"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
+
+// Zoom modal state
+const showZoomedImage = ref(false)
 
 // Calculate years of experience from August 2018 to now
 const yearsOfExperience = computed(() => {
