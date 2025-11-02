@@ -47,7 +47,7 @@
     </div>
 
     <!-- Post Content -->
-    <main v-else class="max-w-4xl mx-auto px-6 py-12">
+    <main v-else class="max-w-5xl mx-auto px-6 py-12">
       <article class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100">
         <!-- Post Header -->
         <div class="p-8 lg:p-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
@@ -80,31 +80,31 @@
         <!-- Post Content -->
         <div class="p-8 lg:p-12">
           <div 
-            class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-800 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white"
+            ref="contentRef"
+            class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-strong:text-gray-800 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto"
             v-html="post.html"
           ></div>
         </div>
 
         <!-- Social Media Sharing -->
-        <div class="p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-blue-100">
-          <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Share This Article</h3>
-            <p class="text-gray-600">Help others discover this content</p>
-          </div>
-          
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <button
-              v-for="platform in socialPlatforms"
-              :key="platform.name"
-              @click="sharePost(platform.key)"
-              class="flex flex-col items-center space-y-2 p-4 rounded-xl text-white font-medium hover:scale-110 transform transition-all duration-300 shadow-lg hover:shadow-xl"
-              :class="platform.bgColor"
-            >
-              <div class="w-8 h-8 flex items-center justify-center">
-                <span v-html="platform.icon"></span>
-              </div>
-              <span class="text-xs">{{ platform.name }}</span>
-            </button>
+        <div class="px-8 lg:px-12 pb-8 pt-4 border-t border-gray-200">
+          <div class="flex items-center justify-between">
+            <p class="text-sm text-gray-500">Share this article:</p>
+            
+            <div class="flex gap-2">
+              <button
+                v-for="platform in socialPlatforms"
+                :key="platform.name"
+                @click="sharePost(platform.key)"
+                :title="`Share on ${platform.name}`"
+                class="p-2 rounded-lg text-white hover:scale-110 transform transition-all duration-200"
+                :class="platform.bgColor"
+              >
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span v-html="platform.icon"></span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -113,8 +113,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, nextTick } from 'vue'
 import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+import bash from 'highlight.js/lib/languages/bash'
+import css from 'highlight.js/lib/languages/css'
+import html from 'highlight.js/lib/languages/xml'
+import json from 'highlight.js/lib/languages/json'
+import markdown from 'highlight.js/lib/languages/markdown'
+import 'highlight.js/styles/github-dark.css'
+
+// Register languages
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('html', html)
+hljs.registerLanguage('xml', html)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('markdown', markdown)
+// Add common aliases
+hljs.registerLanguage('js', javascript)
+hljs.registerLanguage('ts', typescript)
+hljs.registerLanguage('vue', html) // Use html for vue files
+hljs.registerLanguage('sh', bash)
+hljs.registerLanguage('shell', bash)
 
 interface Props {
   slug: string
@@ -124,6 +151,7 @@ const props = defineProps<Props>()
 
 const post = ref<BlogPost | null>(null)
 const loading = ref(true)
+const contentRef = ref<HTMLElement | null>(null)
 
 const socialPlatforms = [
   {
@@ -178,6 +206,14 @@ const loadPost = async () => {
   }
 }
 
+const applyHighlighting = () => {
+  if (!contentRef.value) return
+  
+  contentRef.value.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block as HTMLElement)
+  })
+}
+
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
@@ -202,4 +238,29 @@ const sharePost = (platform: string) => {
 
 onMounted(loadPost)
 watch(() => props.slug, loadPost)
+
+// Watch for post changes and apply highlighting
+watch(post, async () => {
+  if (post.value) {
+    await nextTick()
+    applyHighlighting()
+  }
+})
 </script>
+
+<style scoped>
+/* Override prose styles for code blocks */
+.prose :deep(pre) {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.prose :deep(pre code) {
+  display: block;
+  margin: 1.5em 0;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  background: #1f2937 !important;
+}
+</style>
