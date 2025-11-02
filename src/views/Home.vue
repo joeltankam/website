@@ -14,19 +14,16 @@
               Joël Tankam
             </h1>
             <p class="text-xl text-gray-600 leading-relaxed mb-6">
-              I'm a Software Engineer based in <span class="text-blue-600 font-semibold">Casablanca, Morocco</span>.
-              My deep passion for the .NET doesn't hold me back from enjoying Javascript environments
-              (well, except the language itself; TypeScript 🚀, pun intended).
-              On my blog, I write mostly about these two ecosystems, as well as whatever comes across my mind.
+              I'm a Software Engineer currently based in <span class="text-blue-600 font-semibold">Paris, France</span>.
+              I love building scalable systems and developer tools, with a little passion for the .NET ecosystem.
+              I've also spent some good days with JavaScript/TypeScript environments (even though I have a preference for strongly typed languages).
+              On my blog, I write about software engineering, technology, and whatever comes across my mind.
             </p>
             <p class="text-lg text-gray-600 mb-6">
-              Feel free to reach out to me on
-              <a href="https://twitter.com/joeltankam" rel="noopener noreferrer" target="_blank"
-                class="text-blue-600 font-medium hover:text-blue-700 border-b-2 border-transparent hover:border-blue-600 transition-all duration-300">
-                Twitter
-              </a>.
+              When I'm not coding, you'll find me traveling, exploring museums, reading books, watching cycling races and football (soccer) games, 
+              or diving into whichever passion I have at the moment.
             </p>
-            <div class="mb-8">
+            <div class="mb-8 flex gap-4">
               <router-link 
                 to="/blog"
                 class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -34,6 +31,16 @@
                 <span>Read My Blog</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </router-link>
+              
+              <router-link 
+                to="/about"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-white/80 text-blue-600 font-medium rounded-xl hover:bg-white border-2 border-blue-200 hover:border-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <span>About Me</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
               </router-link>
             </div>
