@@ -17,7 +17,7 @@ A modern blog website built with Vue.js and TailwindCSS that publishes blog post
   - Schema.org structured data (JSON-LD)
   - Canonical URLs
   - Semantic HTML with microdata
-  - robots.txt and sitemap.xml
+  - robots.txt and dynamically generated sitemap.xml
 - 🔖 **Search & Filter**: Search articles and filter by tags
 - 💡 **Syntax Highlighting**: Code blocks with highlight.js
 - 🎯 **TypeScript**: Full type safety throughout the codebase
@@ -43,7 +43,7 @@ This blog implements comprehensive SEO best practices:
 - Microdata attributes (itemscope, itemprop)
 - Canonical URLs for each page
 - robots.txt for crawler directives
-- sitemap.xml for search engines
+- Dynamically generated sitemap.xml (auto-updates on build)
 - Proper heading hierarchy
 - Alt text for images
 - Fast loading performance with Vite

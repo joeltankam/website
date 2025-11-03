@@ -72,7 +72,16 @@ Blog posts use semantic HTML with microdata:
 </article>
 ```
 
-### 4. Static SEO Files
+### 4. Sitemap Generation
+
+#### Dynamic sitemap.xml (`vite-plugin-sitemap.ts`)
+The sitemap is automatically generated during the build process using a custom Vite plugin. It:
+- Scans all blog posts from `src/posts/` directory
+- Includes all static pages (home, about, blog listing)
+- Generates proper XML with URLs, last modified dates, change frequency, and priority
+- Updates automatically when new posts are added
+
+The sitemap is created at build time and placed in the `dist/` folder. No manual updates required!
 
 #### robots.txt (`public/robots.txt`)
 Instructs search engine crawlers:
@@ -81,13 +90,6 @@ User-agent: *
 Allow: /
 Sitemap: https://joeltankam.com/sitemap.xml
 ```
-
-#### sitemap.xml (`public/sitemap.xml`)
-XML sitemap listing all pages with:
-- URL location
-- Last modification date
-- Change frequency
-- Priority
 
 ### 5. Page-Specific SEO
 
@@ -226,20 +228,17 @@ Additional potential improvements:
 ### Adding New Blog Posts
 When creating new posts:
 1. Include complete frontmatter (title, date, excerpt, tags)
-2. Update `sitemap.xml` with the new post URL
+2. The sitemap will automatically update on next build
 3. Use descriptive slugs (filename becomes URL)
 4. Add relevant tags for automatic keyword generation
 
-### Updating Sitemap
-After adding posts, update `public/sitemap.xml`:
-```xml
-<url>
-  <loc>https://joeltankam.com/post/your-slug</loc>
-  <lastmod>YYYY-MM-DD</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-```
+### Sitemap
+The sitemap is automatically generated during each build. No manual updates needed!
+The plugin:
+- Reads all `.md` files from `src/posts/`
+- Extracts frontmatter data (title, date, tags)
+- Generates `dist/sitemap.xml` with all URLs
+- Uses post dates as last modification times
 
 ### SEO Checklist for New Posts
 - [ ] Compelling title (50-60 characters)
@@ -248,7 +247,6 @@ After adding posts, update `public/sitemap.xml`:
 - [ ] Proper heading structure
 - [ ] Alt text for images
 - [ ] Internal links to related posts
-- [ ] Update sitemap.xml
 
 ## Resources
 
