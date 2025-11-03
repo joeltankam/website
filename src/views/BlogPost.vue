@@ -147,6 +147,14 @@
           <Comments theme="light" />
         </div>
       </article>
+
+      <!-- Newsletter Signup -->
+      <div class="mt-12">
+        <Newsletter 
+          title="Enjoyed this article?"
+          description="Subscribe to get notified when I publish new content on software engineering, web development, and technology."
+        />
+      </div>
     </main>
   </div>
 </template>
@@ -159,6 +167,7 @@ import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import Comments from '../components/Comments.vue'
+import Newsletter from '../components/Newsletter.vue'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import typescript from 'highlight.js/lib/languages/typescript'

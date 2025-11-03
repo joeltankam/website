@@ -10,6 +10,7 @@ A modern blog website built with Vue.js and TailwindCSS that publishes blog post
 - 🚀 **Fast Performance**: Built with Vite for optimal performance
 - 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
 - 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
+- 📧 **Newsletter Integration**: Email subscription with multiple provider support (Mailchimp, ConvertKit, custom)
 - 🧭 **Vue Router**: Clean URL routing for blog posts
 - 🔍 **Advanced SEO**: Comprehensive search engine optimization
   - Dynamic meta tags for each page
@@ -120,6 +121,17 @@ This blog uses Giscus (GitHub Discussions) for comments. To enable:
 4. Update `src/components/Comments.vue` with your configuration
 
 For detailed instructions, see [docs/COMMENTS.md](docs/COMMENTS.md)
+
+### Newsletter Setup
+
+This blog includes a newsletter subscription system. To enable:
+
+1. Choose an email provider (Mailchimp, ConvertKit, Buttondown, or custom)
+2. Get your API credentials from the provider
+3. Update `src/components/Newsletter.vue` with your configuration
+4. Configure your email automation (welcome email, etc.)
+
+For detailed instructions, see [docs/NEWSLETTER.md](docs/NEWSLETTER.md)
 
 ### Docker Deployment
 

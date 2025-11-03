@@ -319,6 +319,14 @@
             @page-change="handlePageChange"
             class="mt-8"
           />
+
+          <!-- Newsletter Signup -->
+          <div class="mt-12">
+            <Newsletter 
+              title="Stay Updated"
+              description="Subscribe to get the latest articles on software engineering and technology delivered to your inbox."
+            />
+          </div>
         </div>
       </div>
 
@@ -357,6 +365,7 @@ import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import Pagination from '../components/Pagination.vue'
+import Newsletter from '../components/Newsletter.vue'
 
 const route = useRoute()
 const router = useRouter()

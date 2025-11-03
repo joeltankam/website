@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Blog from '../views/Blog.vue'
 import BlogPost from '../views/BlogPost.vue'
 import About from '../views/About.vue'
+import Privacy from '../views/Privacy.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -19,6 +20,11 @@ const routes: RouteRecordRaw[] = [
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: Privacy
   },
   {
     path: '/post/:slug',
