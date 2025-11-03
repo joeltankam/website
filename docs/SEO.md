@@ -14,7 +14,7 @@ A reusable Vue composable that manages meta tags for each page:
 
 - **Basic Meta Tags**: title, description, keywords, author
 - **Open Graph Tags**: For Facebook and LinkedIn sharing
-- **Twitter Cards**: For Twitter sharing with large image support
+- **X (Twitter) Cards**: For X/Twitter sharing with large image support
 - **Article Tags**: Published time, modified time, section, tags
 - **Canonical URLs**: Prevents duplicate content issues
 - **Automatic Cleanup**: Removes meta tags when component unmounts
@@ -49,7 +49,7 @@ Each blog post includes structured data for search engines:
     "name": "Joël Tankam",
     "sameAs": [
       "https://github.com/joeltankam",
-      "https://twitter.com/joeltankam",
+      "https://x.com/joeltankam",
       "https://linkedin.com/in/joeltankam"
     ]
   },
@@ -134,13 +134,13 @@ Sitemap: https://joeltankam.com/sitemap.xml
 - `og:site_name`: Website name
 - `og:locale`: Content locale
 
-### Twitter Cards
+### X (Twitter) Cards
 - `twitter:card`: Card type (summary/summary_large_image)
-- `twitter:title`: Title for Twitter
-- `twitter:description`: Description for Twitter
-- `twitter:image`: Preview image for Twitter
-- `twitter:site`: Twitter username (@joeltankam)
-- `twitter:creator`: Author Twitter username
+- `twitter:title`: Title for X/Twitter
+- `twitter:description`: Description for X/Twitter
+- `twitter:image`: Preview image for X/Twitter
+- `twitter:site`: X username (@joeltankam)
+- `twitter:creator`: Author X username
 
 ### Article-Specific
 - `article:published_time`: ISO 8601 publish date
@@ -168,7 +168,7 @@ Sitemap: https://joeltankam.com/sitemap.xml
 
 ### Social Media Optimization
 - ✅ Open Graph tags for rich previews
-- ✅ Twitter Card support
+- ✅ X (Twitter) Card support
 - ✅ Social sharing buttons
 - ✅ Author attribution with social links
 
@@ -186,8 +186,8 @@ Use Facebook's Sharing Debugger:
 https://developers.facebook.com/tools/debug/
 ```
 
-### Twitter Card Testing
-Use Twitter's Card Validator:
+### X (Twitter) Card Testing
+Use X's Card Validator:
 ```
 https://cards-dev.twitter.com/validator
 ```
@@ -253,5 +253,5 @@ The plugin:
 - [Google SEO Starter Guide](https://developers.google.com/search/docs/beginner/seo-starter-guide)
 - [Schema.org Documentation](https://schema.org/)
 - [Open Graph Protocol](https://ogp.me/)
-- [Twitter Card Documentation](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
+- [X (Twitter) Card Documentation](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards)
 - [Vue.js SEO Best Practices](https://vuejs.org/guide/scaling-up/ssr.html)

@@ -8,13 +8,13 @@ A modern blog website built with Vue.js and TailwindCSS that publishes blog post
 - 🎨 **TailwindCSS Styling**: Beautiful, responsive design
 - 📱 **Mobile Responsive**: Works on all device sizes
 - 🚀 **Fast Performance**: Built with Vite for optimal performance
-- 🔗 **Social Media Sharing**: Share posts on Twitter, Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
+- 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
 - 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
 - 🧭 **Vue Router**: Clean URL routing for blog posts
 - 🔍 **Advanced SEO**: Comprehensive search engine optimization
   - Dynamic meta tags for each page
   - Open Graph tags for social media
-  - Twitter Card support
+  - X (Twitter) Card support
   - Schema.org structured data (JSON-LD)
   - Canonical URLs
   - Semantic HTML with microdata
@@ -30,7 +30,7 @@ This blog implements comprehensive SEO best practices:
 ### Dynamic Meta Tags
 - Unique title, description, and keywords for each page
 - Automatically generated from blog post frontmatter
-- Open Graph (Facebook) and Twitter Card meta tags
+- Open Graph (Facebook) and X (Twitter) Card meta tags
 - Article-specific tags (published time, modified time, section)
 
 ### Structured Data
@@ -163,7 +163,7 @@ Write your blog post content here using markdown syntax.
 ## Social Media Sharing
 
 The blog includes built-in social media sharing buttons for:
-- Twitter
+- X (Twitter)
 - Facebook  
 - LinkedIn
 - Reddit

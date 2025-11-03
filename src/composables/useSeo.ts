@@ -119,7 +119,7 @@ export function useSeo(metaTags: Ref<SeoMetaTags | null>) {
       setMetaTag('og:image:alt', title, true)
     }
 
-    // Twitter Card tags
+    // X (Twitter) Card tags
     setMetaTag('twitter:card', image ? 'summary_large_image' : 'summary')
     setMetaTag('twitter:title', title)
     setMetaTag('twitter:description', description)
