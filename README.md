@@ -9,6 +9,7 @@ A modern blog website built with Vue.js and TailwindCSS that publishes blog post
 - 📱 **Mobile Responsive**: Works on all device sizes
 - 🚀 **Fast Performance**: Built with Vite for optimal performance
 - 🔗 **Social Media Sharing**: Share posts on Twitter, Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
+- 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
 - 🧭 **Vue Router**: Clean URL routing for blog posts
 - 🔍 **Advanced SEO**: Comprehensive search engine optimization
   - Dynamic meta tags for each page
@@ -108,6 +109,17 @@ Preview the production build:
 ```bash
 npm run preview
 ```
+
+### Comments Setup
+
+This blog uses Giscus (GitHub Discussions) for comments. To enable:
+
+1. Enable GitHub Discussions on your repository
+2. Install the Giscus app: https://github.com/apps/giscus
+3. Configure at https://giscus.app to get your repo ID and category ID
+4. Update `src/components/Comments.vue` with your configuration
+
+For detailed instructions, see [docs/COMMENTS.md](docs/COMMENTS.md)
 
 ### Docker Deployment
 

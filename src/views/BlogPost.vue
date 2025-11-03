@@ -141,6 +141,11 @@
             </div>
           </div>
         </div>
+
+        <!-- Comments Section -->
+        <div class="px-8 lg:px-12 pb-8">
+          <Comments theme="light" />
+        </div>
       </article>
     </main>
   </div>
@@ -153,6 +158,7 @@ import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
 import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
 import Breadcrumb from '../components/Breadcrumb.vue'
+import Comments from '../components/Comments.vue'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import typescript from 'highlight.js/lib/languages/typescript'
