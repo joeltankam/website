@@ -109,6 +109,23 @@ Preview the production build:
 npm run preview
 ```
 
+### Docker Deployment
+
+The easiest way to deploy the blog is using Docker:
+
+```bash
+# Using Docker Compose (recommended)
+docker-compose up -d
+
+# Or using Docker CLI
+docker build -t joeltankam-blog .
+docker run -d -p 8080:80 joeltankam-blog
+```
+
+Access at: http://localhost:8080
+
+See [docs/DOCKER.md](docs/DOCKER.md) for detailed deployment options including AWS, Google Cloud, Azure, and Kubernetes.
+
 ## Writing Blog Posts
 
 1. Create a new markdown file in the `src/posts/` directory
@@ -163,6 +180,34 @@ Sharing links are automatically generated with the post title and URL.
 - **Vue Router 4** - Official router for Vue.js
 - **Marked** - Markdown parser and compiler
 - **Gray Matter** - Front matter parser
+- **Docker** - Containerization for easy deployment
+- **Nginx** - High-performance web server
+
+## Deployment
+
+### Quick Deploy with Docker
+
+```bash
+# Build and run with Docker Compose
+npm run docker:up
+
+# Or manually
+npm run docker:build
+npm run docker:run
+```
+
+Access at: http://localhost:8080
+
+### Production Platforms
+
+This blog can be deployed to:
+- **AWS ECS/Fargate** - Container orchestration
+- **Google Cloud Run** - Serverless containers
+- **Azure Container Instances** - Quick container deployment
+- **DigitalOcean App Platform** - Simple PaaS
+- **Any VPS** - Using Docker or static files
+
+See [docs/DOCKER.md](docs/DOCKER.md) for detailed deployment guides.
 
 ## License
 
