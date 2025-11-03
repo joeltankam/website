@@ -54,30 +54,52 @@
 
     <!-- Post Content -->
     <main v-else class="max-w-5xl mx-auto px-6 py-12">
-      <article class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100">
+      <article 
+        class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100"
+        itemscope 
+        itemtype="https://schema.org/BlogPosting"
+      >
         <!-- Post Header -->
         <div class="px-8 pt-8 pb-4 lg:px-12 lg:pt-12 lg:pb-6 border-b border-gray-200">
           <div class="mb-6">
             <div class="flex items-center space-x-3 mb-6">
-              <p class="text-sm text-gray-600">{{ formatDate(post.frontmatter.date) }}</p>
+              <p class="text-sm text-gray-600">
+                <time :datetime="post.frontmatter.date" itemprop="datePublished">
+                  {{ formatDate(post.frontmatter.date) }}
+                </time>
+              </p>
               <span class="text-gray-400">•</span>
               <p class="text-sm text-blue-600 font-medium">{{ calculateReadTime(post.html) }} min read</p>
             </div>
             
-            <h1 class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight">
+            <h1 
+              class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight"
+              itemprop="headline"
+            >
               {{ post.frontmatter.title }}
             </h1>
-            <p class="text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed">{{ post.frontmatter.excerpt }}</p>
+            <p 
+              class="text-xl lg:text-2xl text-gray-700 mb-6 leading-relaxed"
+              itemprop="description"
+            >
+              {{ post.frontmatter.excerpt }}
+            </p>
             
             <div class="flex flex-wrap gap-3">
               <span 
                 v-for="tag in post.frontmatter.tags" 
                 :key="tag"
                 class="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full border border-blue-200"
+                itemprop="keywords"
               >
                 # {{ tag }}
               </span>
             </div>
+            
+            <!-- Hidden metadata for SEO -->
+            <meta itemprop="author" content="Joël Tankam">
+            <meta itemprop="dateModified" :content="post.frontmatter.date">
+            <link itemprop="mainEntityOfPage" :href="currentUrl">
           </div>
         </div>
 
@@ -87,6 +109,7 @@
             ref="contentRef"
             class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-headings:mb-3 prose-p:text-gray-700 prose-p:leading-normal prose-p:mb-3 prose-a:text-blue-600 prose-strong:text-gray-800 prose-ul:my-3 prose-ol:my-3 prose-li:my-1 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto prose-pre:my-4"
             v-html="post.html"
+            itemprop="articleBody"
           ></div>
         </div>
 
@@ -117,8 +140,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, watch, onMounted, onUnmounted, nextTick, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
+import { useSeo } from '../composables/useSeo'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import typescript from 'highlight.js/lib/languages/typescript'
@@ -153,10 +178,40 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const route = useRoute()
 const post = ref<BlogPost | null>(null)
 const loading = ref(true)
 const contentRef = ref<HTMLElement | null>(null)
 const isScrolled = ref(false)
+
+// Computed current URL
+const currentUrl = computed(() => {
+  const baseUrl = window.location.origin
+  return `${baseUrl}${route.fullPath}`
+})
+
+// SEO meta tags
+const seoMeta = computed(() => {
+  if (!post.value) return null
+
+  const baseUrl = window.location.origin
+  
+  return {
+    title: `${post.value.frontmatter.title} | Joël Tankam`,
+    description: post.value.frontmatter.excerpt,
+    keywords: post.value.frontmatter.tags,
+    author: 'Joël Tankam',
+    url: currentUrl.value,
+    image: `${baseUrl}/og-image.jpg`, // You can add a default OG image
+    type: 'article' as const,
+    publishedTime: new Date(post.value.frontmatter.date).toISOString(),
+    tags: post.value.frontmatter.tags,
+    section: 'Technology'
+  }
+})
+
+// Apply SEO
+const { addStructuredData } = useSeo(seoMeta)
 
 // Scroll detection
 const handleScroll = () => {
@@ -209,6 +264,43 @@ const loadPost = async () => {
     console.log('Loading post:', props.slug)
     post.value = await getPostBySlug(props.slug)
     console.log('Loaded post:', post.value)
+    
+    // Add structured data for SEO
+    if (post.value) {
+      const baseUrl = window.location.origin
+      
+      addStructuredData({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.value.frontmatter.title,
+        description: post.value.frontmatter.excerpt,
+        author: {
+          '@type': 'Person',
+          name: 'Joël Tankam',
+          url: baseUrl,
+          sameAs: [
+            'https://github.com/joeltankam',
+            'https://twitter.com/joeltankam',
+            'https://linkedin.com/in/joeltankam'
+          ]
+        },
+        datePublished: new Date(post.value.frontmatter.date).toISOString(),
+        dateModified: new Date(post.value.frontmatter.date).toISOString(),
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': currentUrl.value
+        },
+        publisher: {
+          '@type': 'Person',
+          name: 'Joël Tankam',
+          url: baseUrl
+        },
+        keywords: post.value.frontmatter.tags.join(', '),
+        articleSection: 'Technology',
+        wordCount: post.value.html.replace(/<[^>]*>/g, '').split(/\s+/).length,
+        articleBody: post.value.html.replace(/<[^>]*>/g, '').substring(0, 500)
+      })
+    }
   } catch (error) {
     console.error('Error loading post:', error)
     post.value = null

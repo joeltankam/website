@@ -88,7 +88,28 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useSeo } from '../composables/useSeo'
+
+const route = useRoute()
+
+// SEO meta tags for home page
+const seoMeta = computed(() => {
+  const baseUrl = window.location.origin
+  const currentUrl = `${baseUrl}${route.fullPath}`
+  
+  return {
+    title: 'Joël Tankam - Software Engineer',
+    description: 'Software Engineer based in Paris, France. Passionate about traveling, museums, astronomy, cycling, and chess. Explore my blog and projects.',
+    keywords: ['Joël Tankam', 'software engineer', 'Paris', 'vue.js', 'typescript', '.net', 'distributed systems'],
+    author: 'Joël Tankam',
+    url: currentUrl,
+    type: 'website' as const
+  }
+})
+
+useSeo(seoMeta)
 
 onMounted(() => {
   // Initialize particles.js if available

@@ -336,13 +336,33 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { getAllPosts, type BlogPost } from '../utils/blog'
+import { useSeo } from '../composables/useSeo'
 
+const route = useRoute()
 const allPosts = ref<BlogPost[]>([])
 const loading = ref(true)
 const searchQuery = ref('')
 const selectedTags = ref<string[]>([])
 const showMobileFilters = ref(false)
+
+// SEO meta tags for blog listing page
+const seoMeta = computed(() => {
+  const baseUrl = window.location.origin
+  const currentUrl = `${baseUrl}${route.fullPath}`
+  
+  return {
+    title: 'Blog | Joël Tankam - Software Engineering & Technology',
+    description: 'Thoughts and insights on software engineering, software development, and modern technology. Explore articles on Vue.js, TypeScript, .NET, and more.',
+    keywords: ['blog', 'software engineering', 'software development', 'vue.js', 'typescript', 'dotnet', 'technology'],
+    author: 'Joël Tankam',
+    url: currentUrl,
+    type: 'website' as const
+  }
+})
+
+useSeo(seoMeta)
 
 onMounted(async () => {
   try {

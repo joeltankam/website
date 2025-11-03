@@ -268,6 +268,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useSeo } from '../composables/useSeo'
+
+const route = useRoute()
 
 // Zoom modal state
 const showZoomedImage = ref(false)
@@ -279,4 +283,21 @@ const yearsOfExperience = computed(() => {
   const years = (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25)
   return Math.floor(years)
 })
+
+// SEO meta tags for about page
+const seoMeta = computed(() => {
+  const baseUrl = window.location.origin
+  const currentUrl = `${baseUrl}${route.fullPath}`
+  
+  return {
+    title: 'About | Joël Tankam - Software Engineer',
+    description: `Software Engineer with ${yearsOfExperience.value}+ years of experience in distributed systems, cloud architecture, and software development. Specializing in .NET, microservices, and real-time data processing.`,
+    keywords: ['about', 'Joël Tankam', 'software engineer', 'distributed systems', '.NET', 'cloud architecture', 'Paris', 'resume', 'CV'],
+    author: 'Joël Tankam',
+    url: currentUrl,
+    type: 'website' as const
+  }
+})
+
+useSeo(seoMeta)
 </script>
