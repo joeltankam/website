@@ -54,6 +54,13 @@
 
     <!-- Post Content -->
     <main v-else class="max-w-5xl mx-auto px-6 py-12">
+      <!-- Breadcrumb -->
+      <Breadcrumb 
+        v-if="post"
+        :items="breadcrumbItems"
+        class="mb-6"
+      />
+      
       <article 
         class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100"
         itemscope 
@@ -144,6 +151,8 @@ import { ref, watch, onMounted, onUnmounted, nextTick, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
 import { useSeo } from '../composables/useSeo'
+import { getOGImage } from '../utils/ogImage'
+import Breadcrumb from '../components/Breadcrumb.vue'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import typescript from 'highlight.js/lib/languages/typescript'
@@ -193,8 +202,6 @@ const currentUrl = computed(() => {
 // SEO meta tags
 const seoMeta = computed(() => {
   if (!post.value) return null
-
-  const baseUrl = window.location.origin
   
   return {
     title: `${post.value.frontmatter.title} | Joël Tankam`,
@@ -202,7 +209,7 @@ const seoMeta = computed(() => {
     keywords: post.value.frontmatter.tags,
     author: 'Joël Tankam',
     url: currentUrl.value,
-    image: `${baseUrl}/og-image.jpg`, // You can add a default OG image
+    image: getOGImage('post', post.value),
     type: 'article' as const,
     publishedTime: new Date(post.value.frontmatter.date).toISOString(),
     tags: post.value.frontmatter.tags,
@@ -212,6 +219,17 @@ const seoMeta = computed(() => {
 
 // Apply SEO
 const { addStructuredData } = useSeo(seoMeta)
+
+// Breadcrumb navigation
+const breadcrumbItems = computed(() => {
+  if (!post.value) return []
+  
+  return [
+    { label: 'Home', to: '/' },
+    { label: 'Blog', to: '/blog' },
+    { label: post.value.frontmatter.title, to: route.fullPath, active: true }
+  ]
+})
 
 // Scroll detection
 const handleScroll = () => {

@@ -12,6 +12,8 @@ export interface SeoMetaTags {
   modifiedTime?: string
   tags?: string[]
   section?: string
+  prevUrl?: string
+  nextUrl?: string
 }
 
 export function useSeo(metaTags: Ref<SeoMetaTags | null>) {
@@ -32,7 +34,9 @@ export function useSeo(metaTags: Ref<SeoMetaTags | null>) {
       publishedTime,
       modifiedTime,
       tags,
-      section
+      section,
+      prevUrl,
+      nextUrl
     } = metaTags.value
 
     // Update document title
@@ -85,6 +89,29 @@ export function useSeo(metaTags: Ref<SeoMetaTags | null>) {
         createdElements.push(canonical)
       }
       canonical.setAttribute('href', url)
+    }
+    
+    // Add prev/next links for pagination
+    if (prevUrl) {
+      let prev = document.querySelector('link[rel="prev"]') as HTMLLinkElement
+      if (!prev) {
+        prev = document.createElement('link')
+        prev.setAttribute('rel', 'prev')
+        document.head.appendChild(prev)
+        createdElements.push(prev)
+      }
+      prev.setAttribute('href', prevUrl)
+    }
+    
+    if (nextUrl) {
+      let next = document.querySelector('link[rel="next"]') as HTMLLinkElement
+      if (!next) {
+        next = document.createElement('link')
+        next.setAttribute('rel', 'next')
+        document.head.appendChild(next)
+        createdElements.push(next)
+      }
+      next.setAttribute('href', nextUrl)
     }
     
     if (image) {

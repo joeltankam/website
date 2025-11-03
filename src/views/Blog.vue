@@ -24,6 +24,12 @@
 
     <!-- Blog Posts -->
     <main class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Breadcrumb -->
+      <Breadcrumb 
+        :items="breadcrumbItems"
+        class="mb-6"
+      />
+      
       <div v-if="!loading && allPosts.length > 0" class="flex gap-8">
         <!-- Sidebar Filters -->
         <aside class="w-80 flex-shrink-0 space-y-6 hidden lg:block">
@@ -220,13 +226,13 @@
           </div>
 
           <!-- Posts Grid -->
-          <div v-if="filteredPosts.length > 0" class="grid grid-cols-1 gap-6">
+          <div v-if="paginatedPosts.length > 0" class="grid grid-cols-1 gap-6">
             <article 
-              v-for="(post, index) in filteredPosts" 
+              v-for="(post, index) in paginatedPosts" 
               :key="post.slug"
               :class="[
                 'group bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2',
-                index === 0 && !searchQuery && selectedTags.length === 0 && isPostRecent(post.frontmatter.date)
+                index === 0 && currentPage === 1 && !searchQuery && selectedTags.length === 0 && isPostRecent(post.frontmatter.date)
                   ? 'border-blue-400 border-2 shadow-xl bg-gradient-to-br from-white/90 to-blue-50/70'
                   : 'border-blue-100 hover:border-blue-300'
               ]"
@@ -304,6 +310,15 @@
               </button>
             </div>
           </div>
+          
+          <!-- Pagination -->
+          <Pagination
+            v-if="totalPages > 1"
+            :current-page="currentPage"
+            :total-pages="totalPages"
+            @page-change="handlePageChange"
+            class="mt-8"
+          />
         </div>
       </div>
 
@@ -336,33 +351,22 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getAllPosts, type BlogPost } from '../utils/blog'
 import { useSeo } from '../composables/useSeo'
+import { getOGImage } from '../utils/ogImage'
+import Breadcrumb from '../components/Breadcrumb.vue'
+import Pagination from '../components/Pagination.vue'
 
 const route = useRoute()
+const router = useRouter()
 const allPosts = ref<BlogPost[]>([])
 const loading = ref(true)
 const searchQuery = ref('')
 const selectedTags = ref<string[]>([])
 const showMobileFilters = ref(false)
-
-// SEO meta tags for blog listing page
-const seoMeta = computed(() => {
-  const baseUrl = window.location.origin
-  const currentUrl = `${baseUrl}${route.fullPath}`
-  
-  return {
-    title: 'Blog | Joël Tankam - Software Engineering & Technology',
-    description: 'Thoughts and insights on software engineering, software development, and modern technology. Explore articles on Vue.js, TypeScript, .NET, and more.',
-    keywords: ['blog', 'software engineering', 'software development', 'vue.js', 'typescript', 'dotnet', 'technology'],
-    author: 'Joël Tankam',
-    url: currentUrl,
-    type: 'website' as const
-  }
-})
-
-useSeo(seoMeta)
+const currentPage = ref(1)
+const postsPerPage = 6
 
 onMounted(async () => {
   try {
@@ -410,6 +414,61 @@ const filteredPosts = computed(() => {
   return result
 })
 
+// Pagination
+const totalPages = computed(() => Math.ceil(filteredPosts.value.length / postsPerPage))
+
+const paginatedPosts = computed(() => {
+  const startIndex = (currentPage.value - 1) * postsPerPage
+  const endIndex = startIndex + postsPerPage
+  return filteredPosts.value.slice(startIndex, endIndex)
+})
+
+// SEO meta tags for blog listing page
+const seoMeta = computed(() => {
+  const baseUrl = window.location.origin
+  const currentUrl = `${baseUrl}${route.fullPath.split('?')[0]}`
+  
+  // Add pagination URLs for SEO
+  const prevUrl = currentPage.value > 1 
+    ? `${currentUrl}?page=${currentPage.value - 1}` 
+    : undefined
+  
+  const nextUrl = currentPage.value < totalPages.value 
+    ? `${currentUrl}?page=${currentPage.value + 1}` 
+    : undefined
+  
+  return {
+    title: 'Blog | Joël Tankam - Software Engineering & Technology',
+    description: 'Thoughts and insights on software engineering, software development, and modern technology. Explore articles on Vue.js, TypeScript, .NET, and more.',
+    keywords: ['blog', 'software engineering', 'software development', 'vue.js', 'typescript', 'dotnet', 'technology'],
+    author: 'Joël Tankam',
+    url: currentUrl,
+    image: getOGImage('blog'),
+    type: 'website' as const,
+    prevUrl,
+    nextUrl
+  }
+})
+
+useSeo(seoMeta)
+
+// Breadcrumb navigation
+const breadcrumbItems = computed(() => [
+  { label: 'Home', to: '/' },
+  { label: 'Blog', to: '/blog', active: true }
+])
+
+const handlePageChange = (page: number) => {
+  currentPage.value = page
+  // Update URL with page parameter
+  router.push({ query: { ...route.query, page: page > 1 ? String(page) : undefined } })
+}
+
+// Reset to page 1 when filters change
+const resetPagination = () => {
+  currentPage.value = 1
+}
+
 // Toggle tag selection
 const toggleTag = (tag: string) => {
   const index = selectedTags.value.indexOf(tag)
@@ -418,6 +477,7 @@ const toggleTag = (tag: string) => {
   } else {
     selectedTags.value.push(tag)
   }
+  resetPagination()
 }
 
 // Get count of posts for a specific tag

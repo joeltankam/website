@@ -23,6 +23,12 @@
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-12">
+      <!-- Breadcrumb -->
+      <Breadcrumb 
+        :items="breadcrumbItems"
+        class="mb-6"
+      />
+      
       <!-- Hero Section -->
       <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 lg:p-12 shadow-2xl border border-blue-100 mb-8">
         <h1 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6">
@@ -33,7 +39,8 @@
           <!-- Profile Picture - floated left -->
           <img 
             src="../assets/me.jpg" 
-            alt="Joël Tankam" 
+            alt="Joël Tankam - Software Engineer based in Paris, France"
+            loading="lazy"
             @click="showZoomedImage = true"
             class="float-left mr-6 mb-4 w-80 h-80 rounded-2xl object-cover shadow-lg border-4 border-blue-100 cursor-pointer hover:scale-105 transition-transform duration-300"
           />
@@ -259,7 +266,8 @@
     >
       <img 
         src="../assets/me.jpg" 
-        alt="Joël Tankam" 
+        alt="Joël Tankam - Software Engineer based in Paris, France"
+        loading="eager"
         class="max-w-full max-h-full rounded-2xl shadow-2xl"
       />
     </div>
@@ -270,6 +278,8 @@
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSeo } from '../composables/useSeo'
+import { getOGImage } from '../utils/ogImage'
+import Breadcrumb from '../components/Breadcrumb.vue'
 
 const route = useRoute()
 
@@ -284,6 +294,12 @@ const yearsOfExperience = computed(() => {
   return Math.floor(years)
 })
 
+// Breadcrumb navigation
+const breadcrumbItems = computed(() => [
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about', active: true }
+])
+
 // SEO meta tags for about page
 const seoMeta = computed(() => {
   const baseUrl = window.location.origin
@@ -295,6 +311,7 @@ const seoMeta = computed(() => {
     keywords: ['about', 'Joël Tankam', 'software engineer', 'distributed systems', '.NET', 'cloud architecture', 'Paris', 'resume', 'CV'],
     author: 'Joël Tankam',
     url: currentUrl,
+    image: getOGImage('about'),
     type: 'website' as const
   }
 })

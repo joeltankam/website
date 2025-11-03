@@ -91,6 +91,7 @@
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSeo } from '../composables/useSeo'
+import { getOGImage } from '../utils/ogImage'
 
 const route = useRoute()
 
@@ -105,6 +106,7 @@ const seoMeta = computed(() => {
     keywords: ['Joël Tankam', 'software engineer', 'Paris', 'vue.js', 'typescript', '.net', 'distributed systems'],
     author: 'Joël Tankam',
     url: currentUrl,
+    image: getOGImage('home'),
     type: 'website' as const
   }
 })

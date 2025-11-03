@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>{{title}} | Joël Tankam</title>
+  <link rel="canonical" href="{{canonicalUrl}}">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+  
+  <style amp-custom>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+      min-height: 100vh;
+    }
+    header {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    h1 {
+      background: linear-gradient(to right, #3b82f6, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2em;
+      margin: 0 0 10px 0;
+    }
+    .meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .tag {
+      background: #eff6ff;
+      color: #3b82f6;
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 0.85em;
+      border: 1px solid #bfdbfe;
+    }
+    article {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    article p {
+      margin: 1em 0;
+    }
+    article h2 {
+      color: #1f2937;
+      margin-top: 1.5em;
+    }
+    article a {
+      color: #3b82f6;
+    }
+    code {
+      background: #eff6ff;
+      color: #3b82f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #1f2937;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    pre code {
+      background: transparent;
+      color: white;
+      padding: 0;
+    }
+    .social-share {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9em;
+    }
+  </style>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{title}}",
+    "description": "{{excerpt}}",
+    "author": {
+      "@type": "Person",
+      "name": "Joël Tankam"
+    },
+    "datePublished": "{{datePublished}}",
+    "mainEntityOfPage": "{{canonicalUrl}}"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>{{title}}</h1>
+    <div class="meta">
+      <time datetime="{{date}}">{{formattedDate}}</time>
+      <span> • </span>
+      <span>{{readTime}} min read</span>
+    </div>
+    <p>{{excerpt}}</p>
+    <div class="tags">
+      {{#each tags}}
+      <span class="tag">#{{this}}</span>
+      {{/each}}
+    </div>
+  </header>
+
+  <article>
+    {{content}}
+  </article>
+
+  <div class="social-share">
+    <h3>Share this article</h3>
+    <div class="social-buttons">
+      <amp-social-share type="twitter" width="45" height="33"></amp-social-share>
+      <amp-social-share type="facebook" width="45" height="33"></amp-social-share>
+      <amp-social-share type="linkedin" width="45" height="33"></amp-social-share>
+      <amp-social-share type="whatsapp" width="45" height="33"></amp-social-share>
+      <amp-social-share type="email" width="45" height="33"></amp-social-share>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      <a href="/">← Back to Home</a> |
+      <a href="/blog">← Back to Blog</a>
+    </p>
+    <p>&copy; 2025 Joël Tankam. All rights reserved.</p>
+  </footer>
+</body>
+</html>
