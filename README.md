@@ -11,6 +11,7 @@ A modern blog website built with Vue.js and TailwindCSS that publishes blog post
 - 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
 - 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
 - 📧 **Newsletter Integration**: Email subscription with multiple provider support (Mailchimp, ConvertKit, custom)
+- 📡 **RSS & Atom Feeds**: Automatic feed generation for blog subscribers
 - 🧭 **Vue Router**: Clean URL routing for blog posts
 - 🔍 **Advanced SEO**: Comprehensive search engine optimization
   - Dynamic meta tags for each page
@@ -85,6 +86,23 @@ src/
    npm install
    ```
 
+### Configuration
+
+The site hostname is configured in `site.config.ts`. You can override it using environment variables:
+
+1. Create a `.env.local` file (not committed to git):
+   ```bash
+   VITE_HOSTNAME=https://yourdomain.com
+   ```
+
+2. Or edit `site.config.ts` directly to change the default hostname
+
+The hostname is used for:
+- Sitemap generation
+- RSS/Atom feeds
+- SEO canonical URLs
+- Social media sharing links
+
 ### Development
 
 Start the development server:
@@ -132,6 +150,17 @@ This blog includes a newsletter subscription system. To enable:
 4. Configure your email automation (welcome email, etc.)
 
 For detailed instructions, see [docs/NEWSLETTER.md](docs/NEWSLETTER.md)
+
+### RSS Feeds
+
+RSS and Atom feeds are automatically generated on build:
+
+- **RSS Feed**: `/rss.xml`
+- **Atom Feed**: `/atom.xml`
+
+Both feeds are auto-discoverable and include all blog posts. An RSS subscribe button is available in the blog header.
+
+For more information, see [docs/RSS.md](docs/RSS.md)
 
 ### Docker Deployment
 

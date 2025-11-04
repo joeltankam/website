@@ -104,7 +104,7 @@
             </div>
             
             <!-- Hidden metadata for SEO -->
-            <meta itemprop="author" content="Joël Tankam">
+            <meta itemprop="author" :content="siteConfig.author">
             <meta itemprop="dateModified" :content="post.frontmatter.date">
             <link itemprop="mainEntityOfPage" :href="currentUrl">
           </div>
@@ -165,6 +165,7 @@ import { useRoute } from 'vue-router'
 import { getPostBySlug, generateShareUrl, type BlogPost } from '../utils/blog'
 import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
+import { siteConfig } from '../../site.config.ts'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import Comments from '../components/Comments.vue'
 import Newsletter from '../components/Newsletter.vue'
@@ -219,10 +220,10 @@ const seoMeta = computed(() => {
   if (!post.value) return null
   
   return {
-    title: `${post.value.frontmatter.title} | Joël Tankam`,
+    title: `${post.value.frontmatter.title} | ${siteConfig.author}`,
     description: post.value.frontmatter.excerpt,
     keywords: post.value.frontmatter.tags,
-    author: 'Joël Tankam',
+    author: siteConfig.author,
     url: currentUrl.value,
     image: getOGImage('post', post.value),
     type: 'article' as const,
@@ -309,12 +310,12 @@ const loadPost = async () => {
         description: post.value.frontmatter.excerpt,
         author: {
           '@type': 'Person',
-          name: 'Joël Tankam',
+          name: siteConfig.author,
           url: baseUrl,
           sameAs: [
-            'https://github.com/joeltankam',
-            'https://x.com/joeltankam',
-            'https://linkedin.com/in/joeltankam'
+            `https://github.com/${siteConfig.social.github}`,
+            `https://x.com/${siteConfig.social.twitter}`,
+            `https://linkedin.com/in/${siteConfig.social.linkedin}`
           ]
         },
         datePublished: new Date(post.value.frontmatter.date).toISOString(),
@@ -325,7 +326,7 @@ const loadPost = async () => {
         },
         publisher: {
           '@type': 'Person',
-          name: 'Joël Tankam',
+          name: siteConfig.author,
           url: baseUrl
         },
         keywords: post.value.frontmatter.tags.join(', '),

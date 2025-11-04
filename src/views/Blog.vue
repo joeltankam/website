@@ -324,8 +324,24 @@
           <div class="mt-12">
             <Newsletter 
               title="Stay Updated"
-              description="Subscribe to get the latest articles on software engineering and technology delivered to your inbox."
+              :description="`Subscribe to get ${siteConfig.description.toLowerCase()} delivered to your inbox.`"
             />
+            
+            <!-- RSS Feed Link -->
+            <div class="mt-3 text-center">
+              <a 
+                href="/rss.xml" 
+                target="_blank"
+                class="inline-flex items-center gap-2 text-xs text-gray-500 hover:text-orange-600 transition-colors"
+                title="Subscribe via RSS"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z"></path>
+                  <path d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z"></path>
+                </svg>
+                <span>Subscribe via RSS</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -363,6 +379,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getAllPosts, type BlogPost } from '../utils/blog'
 import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
+import { siteConfig } from '../../site.config.ts'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import Pagination from '../components/Pagination.vue'
 import Newsletter from '../components/Newsletter.vue'
@@ -447,10 +464,10 @@ const seoMeta = computed(() => {
     : undefined
   
   return {
-    title: 'Blog | Joël Tankam - Software Engineering & Technology',
-    description: 'Thoughts and insights on software engineering, software development, and modern technology. Explore articles on Vue.js, TypeScript, .NET, and more.',
+    title: `Blog | ${siteConfig.author} - Software Engineering & Technology`,
+    description: siteConfig.description,
     keywords: ['blog', 'software engineering', 'software development', 'vue.js', 'typescript', 'dotnet', 'technology'],
-    author: 'Joël Tankam',
+    author: siteConfig.author,
     url: currentUrl,
     image: getOGImage('blog'),
     type: 'website' as const,

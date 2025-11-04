@@ -1,4 +1,5 @@
 import { type BlogPost } from './blog'
+import { siteConfig } from '../../site.config.ts'
 
 export interface OGImageOptions {
   title: string
@@ -46,7 +47,7 @@ export function generateBlogPostOGImage(post: BlogPost): string {
   return generateOGImage({
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
-    author: 'Joël Tankam',
+    author: siteConfig.author,
     date: post.frontmatter.date,
     tags: post.frontmatter.tags
   })

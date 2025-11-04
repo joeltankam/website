@@ -39,14 +39,14 @@
           <!-- Profile Picture - floated left -->
           <img 
             src="../assets/me.jpg" 
-            alt="Joël Tankam - Software Engineer based in Paris, France"
+            :alt="`${siteConfig.author} - Software Engineer based in Paris, France`"
             loading="lazy"
             @click="showZoomedImage = true"
             class="float-left mr-6 mb-4 w-80 h-80 rounded-2xl object-cover shadow-lg border-4 border-blue-100 cursor-pointer hover:scale-105 transition-transform duration-300"
           />
           
           <p>
-            Hi, I'm <span class="font-bold text-xl text-blue-600">Joël Tankam</span> — a <span class="font-semibold text-gray-800">curious and multilingual individual</span> who has been passionate about technology and exploration since a young age. Born in <span class="font-semibold text-gray-800">Cameroon</span>, I left at 14 after graduating high school to pursue my studies in <span class="font-semibold text-gray-800">Morocco</span>, where I would spend the next several years discovering a new culture and building the foundations of my future.
+            Hi, I'm <span class="font-bold text-xl text-blue-600">{{ siteConfig.author }}</span> — a <span class="font-semibold text-gray-800">curious and multilingual individual</span> who has been passionate about technology and exploration since a young age. Born in <span class="font-semibold text-gray-800">Cameroon</span>, I left at 14 after graduating high school to pursue my studies in <span class="font-semibold text-gray-800">Morocco</span>, where I would spend the next several years discovering a new culture and building the foundations of my future.
           </p>
           <p>
             I've always been drawn to <span class="font-bold text-blue-600">solo traveling</span>, finding it to be one of the most enriching experiences. Over the years, I've explored many countries across <span class="font-semibold text-gray-800">Europe and the USA</span>, often planning my trips around <span class="font-semibold text-gray-800">museums and art galleries</span>. There's something magical about standing in front of a masterpiece or wandering through historical exhibitions — it's a big part of what I do when I travel.
@@ -213,14 +213,14 @@
         </p>
 
         <div class="flex flex-wrap gap-4">
-          <a href="https://github.com/joeltankam" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-colors">
+          <a :href="`https://github.com/${siteConfig.social.github}`" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-colors">
             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
             GitHub
           </a>
 
-          <a href="https://linkedin.com/in/joeltankam" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+          <a :href="`https://linkedin.com/in/${siteConfig.social.linkedin}`" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
@@ -265,7 +265,7 @@
     >
       <img 
         src="../assets/me.jpg" 
-        alt="Joël Tankam - Software Engineer based in Paris, France"
+        :alt="`${siteConfig.author} - Software Engineer based in Paris, France`"
         loading="eager"
         class="max-w-full max-h-full rounded-2xl shadow-2xl"
       />
@@ -278,6 +278,7 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSeo } from '../composables/useSeo'
 import { getOGImage } from '../utils/ogImage'
+import { siteConfig } from '../../site.config.ts'
 import Breadcrumb from '../components/Breadcrumb.vue'
 
 const route = useRoute()
@@ -305,10 +306,10 @@ const seoMeta = computed(() => {
   const currentUrl = `${baseUrl}${route.fullPath}`
   
   return {
-    title: 'About | Joël Tankam - Software Engineer',
+    title: `About | ${siteConfig.author} - Software Engineer`,
     description: `Software Engineer with ${yearsOfExperience.value}+ years of experience in distributed systems, cloud architecture, and software development. Specializing in .NET, microservices, and real-time data processing.`,
-    keywords: ['about', 'Joël Tankam', 'software engineer', 'distributed systems', '.NET', 'cloud architecture', 'Paris', 'resume', 'CV'],
-    author: 'Joël Tankam',
+    keywords: ['about', siteConfig.author, 'software engineer', 'distributed systems', '.NET', 'cloud architecture', 'Paris', 'resume', 'CV'],
+    author: siteConfig.author,
     url: currentUrl,
     image: getOGImage('about'),
     type: 'website' as const
