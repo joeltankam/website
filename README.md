@@ -1,11 +1,11 @@
 # Vue.js Blog Website
 
-A modern blog website built with Vue.js and TailwindCSS that publishes blog posts from markdown files and supports social media sharing.
+A modern blog website built with Vue.js and TailwindCSS v4 that publishes blog posts from markdown files and supports social media sharing.
 
 ## Features
 
 - 📝 **Markdown Support**: Write blog posts in markdown format
-- 🎨 **TailwindCSS Styling**: Beautiful, responsive design
+- 🎨 **TailwindCSS v4**: Beautiful, responsive design with the latest Tailwind
 - 📱 **Mobile Responsive**: Works on all device sizes
 - 🚀 **Fast Performance**: Built with Vite for optimal performance
 - 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
