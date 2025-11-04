@@ -295,9 +295,7 @@ const socialPlatforms = [
 const loadPost = async () => {
   loading.value = true
   try {
-    console.log('Loading post:', props.slug)
     post.value = await getPostBySlug(props.slug)
-    console.log('Loaded post:', post.value)
     
     // Add structured data for SEO
     if (post.value) {

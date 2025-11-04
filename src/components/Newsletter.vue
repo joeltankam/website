@@ -146,13 +146,17 @@ const handleSubmit = async () => {
     // Mailchimp integration
     else if (props.provider === 'mailchimp') {
       // Implement Mailchimp API call here
-      console.log('Mailchimp subscription:', formData)
+      if (import.meta.env.DEV) {
+        console.log('Mailchimp subscription:', formData)
+      }
     }
     
     // ConvertKit integration
     else if (props.provider === 'convertkit') {
       // Implement ConvertKit API call here
-      console.log('ConvertKit subscription:', formData)
+      if (import.meta.env.DEV) {
+        console.log('ConvertKit subscription:', formData)
+      }
     }
 
     // Success

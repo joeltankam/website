@@ -396,11 +396,11 @@ const postsPerPage = 6
 
 onMounted(async () => {
   try {
-    console.log('Loading posts...')
     allPosts.value = await getAllPosts()
-    console.log('Loaded posts:', allPosts.value)
   } catch (error) {
-    console.error('Error loading posts:', error)
+    if (import.meta.env.DEV) {
+      console.error('Error loading posts:', error)
+    }
   } finally {
     loading.value = false
   }
