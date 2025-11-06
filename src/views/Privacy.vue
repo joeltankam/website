@@ -128,7 +128,7 @@
         You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on.
       </p>
       <p class="text-gray-700 leading-relaxed mb-4">
-        For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: <a href="https://policies.google.com/privacy?hl=en" class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=en</a>
+        For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: <a href="https://policies.google.com/privacy?hl=en" class="text-primary-600 hover:underline" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=en</a>
       </p>
 
       <h2 class="text-2xl font-semibold text-gray-900 mt-10 mb-4">Data Retention</h2>
@@ -199,7 +199,7 @@
       <div class="mt-12 pt-8 border-t border-gray-200">
         <router-link 
           to="/"
-          class="inline-flex items-center text-blue-600 hover:text-blue-700 hover:underline"
+          class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline"
         >
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -232,3 +232,4 @@ useSeo(seoTags)
 <style scoped>
 /* Styles are handled by Tailwind classes in template */
 </style>
+

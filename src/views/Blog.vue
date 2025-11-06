@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+  <div class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-100">
     <!-- Navigation Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100 sticky top-0 z-10">
+    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-primary-100 sticky top-0 z-10">
       <div class="max-w-6xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <router-link 
             to="/" 
-            class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl hover:from-primary-700 hover:to-secondary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -15,7 +15,7 @@
           </router-link>
           
           <div class="text-right">
-            <h2 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Blog</h2>
+            <h2 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Blog</h2>
             <p class="text-sm text-gray-500">{{ filteredPosts.length }} / {{ allPosts.length }} articles</p>
           </div>
         </div>
@@ -37,8 +37,8 @@
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
             <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
@@ -46,7 +46,7 @@
                 v-model="searchQuery"
                 type="text"
                 placeholder="Search articles..."
-                class="w-full pl-9 pr-8 py-2 text-sm border border-blue-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-400 outline-none transition-colors"
+                class="w-full pl-9 pr-8 py-2 text-sm bg-white/70 backdrop-blur-sm border border-primary-100 rounded-lg focus:ring-1 focus:ring-primary-500 focus:border-primary-400 outline-none transition-colors shadow-md"
               />
               <button
                 v-if="searchQuery"
@@ -61,10 +61,10 @@
           </div>
 
           <!-- Tag Filters -->
-          <div class="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-blue-100 shadow-md">
+          <div class="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-primary-100 shadow-md">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center">
-                <svg class="w-4 h-4 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                 </svg>
                 <h3 class="text-sm font-semibold text-gray-800">Filter by Tags</h3>
@@ -72,7 +72,7 @@
               <button
                 v-if="selectedTags.length > 0"
                 @click="selectedTags = []"
-                class="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                class="text-xs text-primary-600 hover:text-primary-700 font-medium cursor-pointer"
               >
                 Clear
               </button>
@@ -83,9 +83,9 @@
                 :key="tag"
                 @click="toggleTag(tag)"
                 :class="[
-                  'w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                  'w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
                   selectedTags.includes(tag)
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                    ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-md'
                     : 'bg-white/50 text-gray-700 hover:bg-white hover:shadow-sm'
                 ]"
               >
@@ -93,7 +93,7 @@
                   <span
                     :class="[
                       'w-2 h-2 rounded-full mr-2',
-                      selectedTags.includes(tag) ? 'bg-white' : 'bg-blue-400'
+                      selectedTags.includes(tag) ? 'bg-white' : 'bg-primary-400'
                     ]"
                   ></span>
                   {{ tag }}
@@ -106,12 +106,12 @@
           </div>
 
           <!-- Active Filters -->
-          <div v-if="searchQuery || selectedTags.length > 0" class="bg-blue-50/70 backdrop-blur-sm rounded-xl p-4 border border-blue-200">
+          <div v-if="searchQuery || selectedTags.length > 0" class="bg-primary-50/70 backdrop-blur-sm rounded-xl p-4 border border-primary-200">
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-semibold text-blue-900">Active Filters</span>
+              <span class="text-xs font-semibold text-primary-900">Active Filters</span>
               <button
                 @click="clearFilters"
-                class="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                class="text-xs text-primary-600 hover:text-primary-700 font-medium cursor-pointer"
               >
                 Clear All
               </button>
@@ -146,8 +146,8 @@
           <!-- Mobile Search and Filter Toggle -->
           <div class="lg:hidden mb-6 space-y-3">
             <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
+                <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
@@ -155,7 +155,7 @@
                 v-model="searchQuery"
                 type="text"
                 placeholder="Search articles..."
-                class="w-full pl-9 pr-8 py-2 text-sm border border-blue-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-400 outline-none transition-colors"
+                class="w-full pl-9 pr-8 py-2 text-sm bg-white/70 backdrop-blur-sm border border-primary-200 rounded-lg focus:ring-1 focus:ring-primary-500 focus:border-primary-400 outline-none transition-colors shadow-md"
               />
               <button
                 v-if="searchQuery"
@@ -170,14 +170,14 @@
             
             <button
               @click="showMobileFilters = !showMobileFilters"
-              class="w-full flex items-center justify-between px-4 py-2 bg-white/70 backdrop-blur-sm border border-blue-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-white transition-all"
+              class="w-full flex items-center justify-between px-4 py-2 bg-white/70 backdrop-blur-sm border border-primary-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-white transition-all"
             >
               <span class="flex items-center">
-                <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 mr-2 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                 </svg>
                 Filter by Tags
-                <span v-if="selectedTags.length > 0" class="ml-2 px-2 py-0.5 bg-blue-600 text-white rounded-full text-xs">
+                <span v-if="selectedTags.length > 0" class="ml-2 px-2 py-0.5 bg-primary-600 text-white rounded-full text-xs">
                   {{ selectedTags.length }}
                 </span>
               </span>
@@ -187,13 +187,13 @@
             </button>
 
             <!-- Mobile Filters Dropdown -->
-            <div v-if="showMobileFilters" class="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-blue-100 shadow-md space-y-2">
+            <div v-if="showMobileFilters" class="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-primary-100 shadow-md space-y-2">
               <div class="flex items-center justify-between mb-3">
                 <span class="text-xs font-semibold text-gray-800">Select Tags</span>
                 <button
                   v-if="selectedTags.length > 0"
                   @click="selectedTags = []"
-                  class="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                  class="text-xs text-primary-600 hover:text-primary-700 font-medium cursor-pointer"
                 >
                   Clear All
                 </button>
@@ -203,9 +203,9 @@
                 :key="tag"
                 @click="toggleTag(tag)"
                 :class="[
-                  'w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                  'w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
                   selectedTags.includes(tag)
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                    ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-md'
                     : 'bg-white/50 text-gray-700 hover:bg-white hover:shadow-sm'
                 ]"
               >
@@ -213,7 +213,7 @@
                   <span
                     :class="[
                       'w-2 h-2 rounded-full mr-2',
-                      selectedTags.includes(tag) ? 'bg-white' : 'bg-blue-400'
+                      selectedTags.includes(tag) ? 'bg-white' : 'bg-primary-400'
                     ]"
                   ></span>
                   {{ tag }}
@@ -233,14 +233,14 @@
               :class="[
                 'group bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2',
                 index === 0 && currentPage === 1 && !searchQuery && selectedTags.length === 0 && isPostRecent(post.frontmatter.date)
-                  ? 'border-blue-400 border-2 shadow-xl bg-gradient-to-br from-white/90 to-blue-50/70'
-                  : 'border-blue-100 hover:border-blue-300'
+                  ? 'border-primary-400 border-2 shadow-xl bg-gradient-to-br from-white/90 to-primary-50/70'
+                  : 'border-primary-100 hover:border-primary-300'
               ]"
             >
               <div class="p-6">
                 <!-- Post Meta -->
                 <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
-                  <div class="text-xs text-blue-600">
+                  <div class="text-xs text-primary-600">
                     {{ formatDate(post.frontmatter.date) }}
                   </div>
                   <div class="flex flex-wrap gap-2">
@@ -251,8 +251,8 @@
                       :class="[
                         'px-2 py-1 text-xs font-medium rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer',
                         selectedTags.includes(tag)
-                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
-                          : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:from-blue-600 hover:to-indigo-600'
+                          ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white'
+                          : 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white hover:from-primary-600 hover:to-secondary-600'
                       ]"
                     >
                       {{ tag }}
@@ -261,8 +261,8 @@
                 </div>
 
                 <!-- Post Content -->
-                <router-link :to="`/post/${post.slug}`" class="block group-hover:text-blue-600 transition-colors">
-                  <h2 class="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                <router-link :to="`/post/${post.slug}`" class="block group-hover:text-primary-600 transition-colors">
+                  <h2 class="text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
                     {{ post.frontmatter.title }}
                   </h2>
                   <p class="text-gray-600 mb-4 leading-relaxed text-sm">
@@ -275,7 +275,7 @@
                   <router-link 
                     v-if="index === 0 && !searchQuery && selectedTags.length === 0"
                     :to="`/post/${post.slug}`"
-                    class="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                    class="inline-flex items-center space-x-2 px-5 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-sm font-medium rounded-lg hover:from-primary-700 hover:to-secondary-700 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     <span>Read Article</span>
                     <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -292,9 +292,9 @@
 
           <!-- No Filtered Results State -->
           <div v-else-if="!loading && filteredPosts.length === 0 && allPosts.length > 0" class="text-center py-20">
-            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-12 border border-blue-200 shadow-lg">
-              <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-12 border border-primary-200 shadow-lg">
+              <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
@@ -304,7 +304,7 @@
               </p>
               <button
                 @click="clearFilters"
-                class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl hover:from-primary-700 hover:to-secondary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
               >
                 <span>Clear All Filters</span>
               </button>
@@ -349,17 +349,17 @@
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-20">
         <div class="relative">
-          <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-200 border-t-blue-600 mx-auto"></div>
+          <div class="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-blue-600 mx-auto"></div>
           <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-transparent border-t-blue-400 animate-pulse mx-auto"></div>
         </div>
-        <p class="text-blue-600 mt-6 text-lg font-medium">Loading amazing content...</p>
+        <p class="text-primary-600 mt-6 text-lg font-medium">Loading amazing content...</p>
       </div>
 
       <!-- No Posts State -->
       <div v-else-if="!loading && allPosts.length === 0" class="text-center py-20">
-        <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-12 border border-blue-200 shadow-lg">
-          <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-12 border border-primary-200 shadow-lg">
+          <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
           </div>
@@ -539,3 +539,5 @@ const calculateReadTime = (html: string): number => {
   return Math.ceil(words / wordsPerMinute)
 }
 </script>
+
+

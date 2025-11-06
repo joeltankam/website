@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+  <div class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-100 relative overflow-hidden">
     <!-- Particles Background -->
     <div id="particles-js" class="absolute inset-0"></div>
     
@@ -7,14 +7,14 @@
     <div class="relative z-10 min-h-screen flex items-center justify-center px-6 py-12">
       <div class="max-w-4xl w-full">
         <!-- Main Card -->
-        <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-blue-100 transition-all duration-700 ease-out">
+        <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-primary-100 transition-all duration-700 ease-out">
           <div class="mb-8">
-            <p class="text-2xl text-blue-400 mb-2">Hi, I'm</p>
-            <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6">
+            <p class="text-2xl text-primary-400 mb-2">Hi, I'm</p>
+            <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6">
               {{ siteConfig.author }}
             </h1>
             <p class="text-xl text-gray-600 leading-relaxed mb-6">
-              I'm a Software Engineer currently based in <span class="text-blue-600 font-semibold">Paris, France</span>.
+              I'm a Software Engineer currently based in <span class="text-primary-600 font-semibold">Paris, France</span>.
               I love building scalable systems and developer tools, with a little passion for the .NET ecosystem.
               I've also spent some good days with JavaScript/TypeScript environments (even though I have a preference for strongly typed languages).
               On my blog, I write about software engineering, technology, and whatever comes across my mind.
@@ -26,7 +26,7 @@
             <div class="mb-8 flex gap-4">
               <router-link 
                 to="/blog"
-                class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl hover:from-primary-700 hover:to-secondary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Read My Blog</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -36,7 +36,7 @@
               
               <router-link 
                 to="/about"
-                class="inline-flex items-center space-x-2 px-6 py-3 bg-white/80 text-blue-600 font-medium rounded-xl hover:bg-white border-2 border-blue-200 hover:border-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                class="inline-flex items-center space-x-2 px-6 py-3 bg-white/80 text-primary-600 font-medium rounded-xl hover:bg-white border-2 border-primary-200 hover:border-primary-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>About Me</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,12 +47,12 @@
           </div>
 
           <!-- Divider -->
-          <div class="border-t border-blue-200 my-8"></div>
+          <div class="border-t border-primary-200 my-8"></div>
 
           <!-- Social Links -->
           <div class="flex flex-wrap gap-3">
             <a :href="`https://github.com/${siteConfig.social.github}`" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-blue-200 rounded-xl hover:border-gray-900 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
+              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-primary-200 rounded-xl hover:border-gray-900 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 text-gray-700 group-hover:text-gray-900 transition-colors">
                 <title>GitHub</title>
                 <path
@@ -62,7 +62,7 @@
             </a>
             
             <a :href="`https://x.com/${siteConfig.social.twitter}`" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-blue-200 rounded-xl hover:border-black hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
+              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-primary-200 rounded-xl hover:border-black hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 text-gray-700 group-hover:text-black transition-colors">
                 <title>X (formerly Twitter)</title>
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -71,13 +71,13 @@
             </a>
             
             <a :href="`https://www.linkedin.com/in/${siteConfig.social.linkedin}/`" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-blue-200 rounded-xl hover:border-blue-600 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 text-blue-500 group-hover:text-blue-600 transition-colors">
+              class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-primary-200 rounded-xl hover:border-primary-600 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 text-primary-500 group-hover:text-primary-600 transition-colors">
                 <title>LinkedIn</title>
                 <path
                   d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
               </svg>
-              <span class="text-gray-700 font-medium group-hover:text-blue-600 transition-colors">/{{ siteConfig.social.linkedin }}</span>
+              <span class="text-gray-700 font-medium group-hover:text-primary-600 transition-colors">/{{ siteConfig.social.linkedin }}</span>
             </a>
           </div>
         </div>
@@ -114,19 +114,22 @@ const seoMeta = computed(() => {
 useSeo(seoMeta)
 
 onMounted(() => {
+  // Get primary-500 color from CSS variable
+  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary-500').trim() || '#3b82f6'
+  
   // Initialize particles.js if available
   if (typeof (window as any).particlesJS !== 'undefined') {
     (window as any).particlesJS('particles-js', {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: '#3b82f6' },
+        color: { value: primaryColor },
         shape: { type: 'circle' },
         opacity: { value: 0.5, random: false },
         size: { value: 3, random: true },
         line_linked: {
           enable: true,
           distance: 150,
-          color: '#3b82f6',
+          color: primaryColor,
           opacity: 0.4,
           width: 1
         },
@@ -178,3 +181,5 @@ onMounted(() => {
   }
 })
 </script>
+
+

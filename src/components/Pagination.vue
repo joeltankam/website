@@ -8,7 +8,7 @@
         'px-4 py-2 rounded-lg font-medium transition-all',
         currentPage === 1
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-blue-600 hover:bg-blue-50 border border-blue-200 shadow-sm'
+          : 'bg-white text-primary-600 hover:bg-primary-50 border border-primary-200 shadow-sm'
       ]"
     >
       ← Previous
@@ -23,8 +23,8 @@
         :class="[
           'w-10 h-10 rounded-lg font-medium transition-all',
           page === currentPage
-            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-            : 'bg-white text-gray-700 hover:bg-blue-50 border border-gray-200'
+            ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg'
+            : 'bg-white text-gray-700 hover:bg-primary-50 border border-gray-200'
         ]"
       >
         {{ page }}
@@ -39,7 +39,7 @@
         'px-4 py-2 rounded-lg font-medium transition-all',
         currentPage === totalPages
           ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-          : 'bg-white text-blue-600 hover:bg-blue-50 border border-blue-200 shadow-sm'
+          : 'bg-white text-primary-600 hover:bg-primary-50 border border-primary-200 shadow-sm'
       ]"
     >
       Next →
@@ -93,3 +93,5 @@ const goToPage = (page: number) => {
   }
 }
 </script>
+
+

@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+  <div class="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-100">
     <!-- Navigation Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-100 sticky top-0 z-10 transition-all duration-300">
+    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-primary-100 sticky top-0 z-10 transition-all duration-300">
       <div class="max-w-6xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <router-link 
             to="/blog" 
-            class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl hover:from-primary-700 hover:to-secondary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -19,7 +19,7 @@
             v-if="post && isScrolled"
             class="text-right flex-1 mx-4 overflow-hidden transition-all duration-300"
           >
-            <h2 class="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent truncate">
+            <h2 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent truncate">
               {{ post.frontmatter.title }}
             </h2>
             <p class="text-sm text-gray-500">{{ formatDate(post.frontmatter.date) }}</p>
@@ -31,10 +31,10 @@
     <!-- Loading State -->
     <div v-if="loading" class="max-w-4xl mx-auto px-6 py-20 text-center">
       <div class="relative">
-        <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-200 border-t-blue-600 mx-auto"></div>
-        <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-transparent border-t-blue-400 animate-pulse mx-auto"></div>
+        <div class="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-600 mx-auto"></div>
+        <div class="absolute inset-0 rounded-full h-16 w-16 border-4 border-transparent border-t-primary-400 animate-pulse mx-auto"></div>
       </div>
-      <p class="text-blue-600 mt-6 text-lg font-medium">Loading article...</p>
+      <p class="text-primary-600 mt-6 text-lg font-medium">Loading article...</p>
     </div>
 
     <!-- Error State -->
@@ -62,7 +62,7 @@
       />
       
       <article 
-        class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-blue-100"
+        class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl border border-primary-100"
         itemscope 
         itemtype="https://schema.org/BlogPosting"
       >
@@ -76,11 +76,11 @@
                 </time>
               </p>
               <span class="text-gray-400">•</span>
-              <p class="text-sm text-blue-600 font-medium">{{ calculateReadTime(post.html) }} min read</p>
+              <p class="text-sm text-primary-600 font-medium">{{ calculateReadTime(post.html) }} min read</p>
             </div>
             
             <h1 
-              class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6 leading-tight"
+              class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6 leading-tight"
               itemprop="headline"
             >
               {{ post.frontmatter.title }}
@@ -96,7 +96,7 @@
               <span 
                 v-for="tag in post.frontmatter.tags" 
                 :key="tag"
-                class="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full border border-blue-200"
+                class="px-4 py-2 bg-primary-50 text-primary-600 text-sm font-medium rounded-full border border-primary-200"
                 itemprop="keywords"
               >
                 # {{ tag }}
@@ -114,7 +114,7 @@
         <div class="px-8 pt-4 pb-8 lg:px-12 lg:pt-6 lg:pb-12">
           <div 
             ref="contentRef"
-            class="prose prose-lg prose-blue max-w-none prose-headings:text-gray-800 prose-headings:mb-3 prose-p:text-gray-700 prose-p:leading-normal prose-p:mb-3 prose-a:text-blue-600 prose-strong:text-gray-800 prose-ul:my-3 prose-ol:my-3 prose-li:my-1 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto prose-pre:my-4"
+            class="prose prose-lg prose-primary max-w-none prose-headings:text-gray-800 prose-headings:mb-3 prose-p:text-gray-700 prose-p:leading-normal prose-p:mb-3 prose-a:text-primary-600 prose-strong:text-gray-800 prose-ul:my-3 prose-ol:my-3 prose-li:my-1 prose-code:text-primary-600 prose-code:bg-primary-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-white prose-pre:overflow-x-auto prose-pre:my-4"
             v-html="post.html"
             itemprop="articleBody"
           ></div>
@@ -263,13 +263,13 @@ const socialPlatforms = [
   {
     name: 'Facebook',
     key: 'facebook',
-    bgColor: 'bg-blue-600 hover:bg-blue-700',
+    bgColor: 'bg-primary-600 hover:bg-primary-700',
     icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>'
   },
   {
     name: 'LinkedIn',
     key: 'linkedin',
-    bgColor: 'bg-blue-700 hover:bg-blue-800',
+    bgColor: 'bg-primary-700 hover:bg-primary-800',
     icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'
   },
   {
@@ -287,7 +287,7 @@ const socialPlatforms = [
   {
     name: 'Telegram',
     key: 'telegram',
-    bgColor: 'bg-blue-400 hover:bg-blue-500',
+    bgColor: 'bg-primary-400 hover:bg-primary-500',
     icon: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>'
   }
 ]
@@ -403,6 +403,7 @@ watch(post, async () => {
   margin: 1.5em 0;
   padding: 1.25rem;
   border-radius: 0.5rem;
-  background: #1f2937 !important;
+  background: var(--color-gray-800) !important;
 }
 </style>
+

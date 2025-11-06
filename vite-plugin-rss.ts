@@ -77,7 +77,7 @@ function generateRssFeed(hostname: string): void {
   
   // Write RSS file
   fs.writeFileSync(path.join(outDir, 'rss.xml'), rssXml.trim())
-  console.log('✅ RSS feed generated at dist/rss.xml')
+  console.log('✓ RSS feed generated at dist/rss.xml')
   
   // Also generate Atom feed
   generateAtomFeed(posts, outDir, hostname)
@@ -104,5 +104,5 @@ function generateAtomFeed(posts: RssItem[], outDir: string, hostname: string): v
 </feed>`
   
   fs.writeFileSync(path.join(outDir, 'atom.xml'), atomXml.trim())
-  console.log('✅ Atom feed generated at dist/atom.xml')
+  console.log('✓ Atom feed generated at dist/atom.xml')
 }

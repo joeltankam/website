@@ -2,15 +2,58 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Custom color palette */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  /* 
+   * Color Palette
+   * All colors defined here are used throughout the application.
+   * Update these to change the site's color scheme globally.
+   * 
+   * IMPORTANT: Use `primary-*` classes in your code (e.g., bg-primary-500, text-primary-600)
+   * instead of `blue-*` classes. This provides semantic naming and makes theme changes easier.
+   * The primary colors currently map to blue, but can be changed by updating the blue values below.
+   */
+  
+  /* Blue color palette (primary) */
+  --color-blue-50: #eff6ff;   /* Light backgrounds, badges */
+  --color-blue-100: #dbeafe;  /* Subtle backgrounds, hover states */
+  --color-blue-200: #bfdbfe;  /* Borders, dividers */
+  --color-blue-300: #93c5fd;  /* Muted accents */
+  --color-blue-400: #60a5fa;  /* Interactive elements, tags */
+  --color-blue-500: #3b82f6;  /* Primary brand color, particles.js */
+  --color-blue-600: #2563eb;  /* Primary buttons, links */
+  --color-blue-700: #1d4ed8;  /* Button hover, strong emphasis */
+  --color-blue-800: #1e40af;  /* Deep accents */
+  --color-blue-900: #1e3a8a;  /* Darkest blue */
+  
+  /* Alias: primary colors map to blue */
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+  
+  /* Indigo for accents and gradients */
+  --color-indigo-500: #6366f1; /* Gradient accents (OG images) */
+  --color-indigo-600: #4f46e5; /* Deep purple accents */
+  --color-indigo-700: #4338ca; /* Favicon gradient, deep emphasis */
+  
+  /* Alias: secondary colors map to indigo */
+  --color-secondary-50: #eef2ff;   /* Light backgrounds */
+  --color-secondary-100: #e0e7ff;  /* Subtle backgrounds */
+  --color-secondary-200: #c7d2fe;  /* Borders, dividers */
+  --color-secondary-300: #a5b4fc;  /* Muted accents */
+  --color-secondary-400: #818cf8;  /* Interactive elements */
+  --color-secondary-500: var(--color-indigo-500); /* Secondary brand color */
+  --color-secondary-600: var(--color-indigo-600); /* Secondary buttons, accents */
+  --color-secondary-700: var(--color-indigo-700); /* Hover states */
+  --color-secondary-800: #3730a3;  /* Deep accents */
+  --color-secondary-900: #312e81;  /* Darkest indigo */
+  
+  /* Gray for text and code backgrounds */
+  --color-gray-800: #1f2937;   /* Code block backgrounds, dark text */
+  --color-gray-900: #111827;   /* Darkest text, strong emphasis */
 }

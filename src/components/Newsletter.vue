@@ -1,13 +1,13 @@
 <template>
   <div class="newsletter-signup">
     <div 
-      class="border border-blue-200 rounded-lg p-4 bg-blue-50/30"
+      class="border border-primary-200 rounded-lg p-4 bg-primary-50/30"
       :class="{ 'opacity-75': isSubmitting }"
     >
       <!-- Success State -->
       <div v-if="isSuccess" class="text-center">
-        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+          <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
         </div>
@@ -18,8 +18,8 @@
       <!-- Signup Form -->
       <div v-else>
         <div class="flex items-start gap-2 mb-3">
-          <div class="w-7 h-7 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-7 h-7 bg-primary-100 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
             </svg>
           </div>
@@ -38,7 +38,7 @@
                 type="text"
                 :required="collectName"
                 placeholder="Name"
-                class="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-400 outline-none text-sm transition-colors"
+                class="w-full px-3 py-2 border border-primary-200 rounded-lg focus:ring-1 focus:ring-primary-500 focus:border-primary-400 outline-none text-sm transition-colors"
                 :disabled="isSubmitting"
               />
             </div>
@@ -50,7 +50,7 @@
                 type="email"
                 required
                 placeholder="Email address"
-                class="w-full px-3 py-2 border border-blue-200 rounded-lg focus:ring-1 focus:ring-blue-500 focus:border-blue-400 outline-none text-sm transition-colors"
+                class="w-full px-3 py-2 border border-primary-200 rounded-lg focus:ring-1 focus:ring-primary-500 focus:border-primary-400 outline-none text-sm transition-colors"
                 :disabled="isSubmitting"
               />
             </div>
@@ -58,7 +58,7 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+              class="px-6 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
             >
               <span v-if="isSubmitting" class="flex items-center">
                 <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@
 
           <p class="text-xs text-gray-600 text-center leading-relaxed">
             Just for fun, low traffic, no sales pitches. I'll never sell your email. 
-            Read the <a href="/privacy" class="text-blue-600 hover:text-blue-700 hover:underline">Privacy Policy</a>.
+            Read the <a href="/privacy" class="text-primary-600 hover:text-primary-700 hover:underline">Privacy Policy</a>.
           </p>
         </form>
       </div>
@@ -192,3 +192,4 @@ const handleSubmit = async () => {
   }
 }
 </style>
+

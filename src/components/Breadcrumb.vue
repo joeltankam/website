@@ -16,7 +16,7 @@
         <router-link 
           v-if="!item.active"
           :to="item.to"
-          class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+          class="text-primary-600 hover:text-primary-800 hover:underline transition-colors"
           itemprop="item"
         >
           <span itemprop="name">{{ item.label }}</span>
@@ -57,3 +57,4 @@ interface Props {
 
 defineProps<Props>()
 </script>
+
