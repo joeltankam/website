@@ -35,7 +35,6 @@
         <aside class="w-80 flex-shrink-0 space-y-6 hidden lg:block">
           <!-- Search Bar -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-10">
                 <svg class="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
