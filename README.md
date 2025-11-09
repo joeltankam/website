@@ -2,6 +2,19 @@
 
 Personal blog built with Vue.js 3, TailwindCSS v4, and TypeScript.
 
+## Tech Stack
+
+- Vue.js 3 (Composition API + TypeScript)
+- TailwindCSS v4 (CSS-first config, semantic `primary-*` colors)
+- Vite
+- Vue Router 4
+- Marked + Gray Matter (markdown parsing)
+- Buffer polyfill (gray-matter browser compatibility)
+- Particles.js (landing page animation)
+- Giscus (comments via GitHub Discussions)
+- Buttondown (newsletter, email-only)
+- RSS/Atom feeds (Vite plugins)
+
 ## Development Setup
 
 ### Prerequisites
@@ -40,8 +53,17 @@ docker-compose up -d
 # Access at http://localhost:8080
 ```
 
-See `docs/DOCKER.md` for deployment options.
+See `docs/docker.md` for deployment options.
 
+## Configuration
+
+- **Hostname**: Set in `site.config.ts` or via `VITE_HOSTNAME` environment variable
+- **Comments**: Configure Giscus in `src/components/Comments.vue` - see `docs/comments.md`
+- **Newsletter**: Buttondown username in `src/components/Newsletter.vue` - see `docs/newsletter.md`
+- **RSS Feeds**: Auto-generated at `/rss.xml` and `/atom.xml` - see `docs/rss.md`
+- **Theme**: TailwindCSS v4 config in `tailwind.css` - see `docs/tailwind-v4-migration.md`
+
+Full documentation available in `docs/` folder.
 
 ## Project Structure
 
