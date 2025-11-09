@@ -75,21 +75,20 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
+import { siteConfig } from '../../site.config'
 
 interface Props {
   title?: string
   description?: string
   buttonText?: string
   successMessage?: string
-  privacyText?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   title: 'Subscribe to the Newsletter',
   description: 'Get the latest articles and insights delivered straight to your inbox. No spam, unsubscribe anytime.',
   buttonText: 'Subscribe',
-  successMessage: 'Thank you for subscribing!',
-  privacyText: 'We respect your privacy. Read our'
+  successMessage: 'Thank you for subscribing!'
 })
 
 const formData = reactive({
@@ -111,7 +110,7 @@ const handleSubmit = async () => {
     
     // Use Buttondown's form submission endpoint
     const formElement = document.createElement('form')
-    formElement.action = 'https://buttondown.email/api/emails/embed-subscribe/joeltankam'
+    formElement.action = `https://buttondown.email/api/emails/embed-subscribe/${siteConfig.newsletter.buttondownUsername}`
     formElement.method = 'post'
     formElement.target = '_blank'
     

@@ -31,6 +31,11 @@ export const siteConfig = {
     twitter: 'joeltankam',
     github: 'joeltankam',
     linkedin: 'joeltankam'
+  },
+  
+  // Newsletter configuration
+  newsletter: {
+    buttondownUsername: 'joeltankam'
   }
 }
 /**

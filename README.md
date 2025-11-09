@@ -2,19 +2,6 @@
 
 Personal blog built with Vue.js 3, TailwindCSS v4, and TypeScript.
 
-## Tech Stack
-
-- Vue.js 3 (Composition API + TypeScript)
-- TailwindCSS v4 (CSS-first config, semantic `primary-*` colors)
-- Vite
-- Vue Router 4
-- Marked + Gray Matter (markdown parsing)
-- Buffer polyfill (gray-matter browser compatibility)
-- Particles.js (landing page animation)
-- Giscus (comments via GitHub Discussions)
-- Buttondown (newsletter, email-only)
-- RSS/Atom feeds (Vite plugins)
-
 ## Development Setup
 
 ### Prerequisites
