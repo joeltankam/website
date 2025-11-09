@@ -1,282 +1,80 @@
-# Vue.js Blog Website
+# Personal Blog Repository
 
-A modern blog website built with Vue.js and TailwindCSS v4 that publishes blog posts from markdown files and supports social media sharing.
+Personal blog built with Vue.js 3, TailwindCSS v4, and TypeScript.
 
-## Features
+## Development Setup
 
-- 📝 **Markdown Support**: Write blog posts in markdown format
-- 🎨 **TailwindCSS v4**: Beautiful, responsive design with the latest Tailwind
-- 📱 **Mobile Responsive**: Works on all device sizes
-- 🚀 **Fast Performance**: Built with Vite for optimal performance
-- 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
-- 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
-- 📧 **Newsletter Integration**: Email subscription with Buttondown (supports RSS-to-email automation)
-- 📡 **RSS & Atom Feeds**: Automatic feed generation for blog subscribers
-- 🧭 **Vue Router**: Clean URL routing for blog posts
-- 🔍 **Advanced SEO**: Comprehensive search engine optimization
-  - Dynamic meta tags for each page
-  - Open Graph tags for social media
-  - X (Twitter) Card support
-  - Schema.org structured data (JSON-LD)
-  - Canonical URLs
-  - Semantic HTML with microdata
-  - robots.txt and dynamically generated sitemap.xml
-- 🔖 **Search & Filter**: Search articles and filter by tags
-- 💡 **Syntax Highlighting**: Code blocks with highlight.js
-- 🎯 **TypeScript**: Full type safety throughout the codebase
+### Prerequisites
 
-## SEO Features
+- Node.js 16+
+- npm or yarn
 
-This blog implements comprehensive SEO best practices:
+### Installation
 
-### Dynamic Meta Tags
-- Unique title, description, and keywords for each page
-- Automatically generated from blog post frontmatter
-- Open Graph (Facebook) and X (Twitter) Card meta tags
-- Article-specific tags (published time, modified time, section)
+```bash
+# Install dependencies
+npm install
 
-### Structured Data
-- JSON-LD Schema.org markup for BlogPosting
-- Author information with social profile links
-- Article metadata (word count, publish date, keywords)
-- Breadcrumb navigation support
+# Start development server
+npm run dev
+```
 
-### Technical SEO
-- Semantic HTML5 markup
-- Microdata attributes (itemscope, itemprop)
-- Canonical URLs for each page
-- robots.txt for crawler directives
-- Dynamically generated sitemap.xml (auto-updates on build)
-- Proper heading hierarchy
-- Alt text for images
-- Fast loading performance with Vite
+Development server runs at `http://localhost:5173`
 
-### Composable SEO System
-The `useSeo` composable provides:
-- Automatic meta tag management
-- Clean up on component unmount
-- Reactive updates when content changes
-- Structured data injection
+### Build
+
+```bash
+# Production build
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+### Docker
+
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Access at http://localhost:8080
+```
+
+See `docs/DOCKER.md` for deployment options.
+
 
 ## Project Structure
 
 ```
 src/
-├── components/          # Vue components
-├── views/              # Vue views (Home, BlogPost)
-├── router/             # Vue Router configuration  
-├── utils/              # Utility functions for blog processing
-├── posts/              # Markdown blog posts
-├── assets/             # Static assets
-└── style.css           # TailwindCSS styles
+├── components/     # Vue components
+├── views/          # Page views
+├── router/         # Vue Router config
+├── utils/          # Utilities
+├── posts/          # Markdown blog posts
+└── style.css       # Global styles
+docs/               # Documentation
+public/             # Static assets
 ```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Configuration
-
-The site hostname is configured in `site.config.ts`. You can override it using environment variables:
-
-1. Create a `.env.local` file (not committed to git):
-   ```bash
-   VITE_HOSTNAME=https://yourdomain.com
-   ```
-
-2. Or edit `site.config.ts` directly to change the default hostname
-
-The hostname is used for:
-- Sitemap generation
-- RSS/Atom feeds
-- SEO canonical URLs
-- Social media sharing links
-
-### Development
-
-Start the development server:
-```bash
-npm run dev
-```
-
-The blog will be available at `http://localhost:5173`
-
-**Important**: If you don't see blog posts or CSS styling:
-1. Clear your browser cache (Ctrl+Shift+R or Cmd+Shift+R)
-2. Restart the dev server
-3. Check browser console for any errors
-
-### Building for Production
-
-Build the project:
-```bash
-npm run build
-```
-
-Preview the production build:
-```bash
-npm run preview
-```
-
-### Comments Setup
-
-This blog uses Giscus (GitHub Discussions) for comments. To enable:
-
-1. Enable GitHub Discussions on your repository
-2. Install the Giscus app: https://github.com/apps/giscus
-3. Configure at https://giscus.app to get your repo ID and category ID
-4. Update `src/components/Comments.vue` with your configuration
-
-For detailed instructions, see [docs/COMMENTS.md](docs/COMMENTS.md)
-
-### Newsletter Setup
-
-The blog includes a newsletter subscription component using Buttondown:
-
-1. **Create a Buttondown account** at https://buttondown.email (free)
-2. **Enable RSS-to-Email** in Buttondown settings (Settings → RSS)
-3. **Update your username** in `src/components/Newsletter.vue` if different from `joeltankam`
-4. **Optional**: Customize the newsletter text using component props
-
-The component is pre-configured and ready to use. Subscribers will automatically receive emails when you publish new posts.
-
-For detailed instructions, see:
-- **Quick Setup**: [docs/NEWSLETTER-QUICKSTART.md](docs/NEWSLETTER-QUICKSTART.md)
-- **Full Documentation**: [docs/NEWSLETTER.md](docs/NEWSLETTER.md)
-
-### RSS Feeds
-
-RSS and Atom feeds are automatically generated on build:
-
-- **RSS Feed**: `/rss.xml`
-- **Atom Feed**: `/atom.xml`
-
-Both feeds are auto-discoverable and include all blog posts. An RSS subscribe button is available in the blog header.
-
-For more information, see [docs/RSS.md](docs/RSS.md)
-
-### Docker Deployment
-
-The easiest way to deploy the blog is using Docker:
-
-```bash
-# Using Docker Compose (recommended)
-docker-compose up -d
-
-# Or using Docker CLI
-docker build -t joeltankam-blog .
-docker run -d -p 8080:80 joeltankam-blog
-```
-
-Access at: http://localhost:8080
-
-See [docs/DOCKER.md](docs/DOCKER.md) for detailed deployment options including AWS, Google Cloud, Azure, and Kubernetes.
-
-## Writing Blog Posts
-
-1. Create a new markdown file in the `src/posts/` directory
-2. Add frontmatter at the top of the file:
-
-```markdown
----
-title: "Your Post Title"
-date: "2025-01-15"
-excerpt: "Brief description of your post"
-tags: ["tag1", "tag2", "tag3"]
----
-
-# Your Post Content
-
-Write your blog post content here using markdown syntax.
-```
-
-3. The blog will automatically detect and display the new post
-
-**Note:** The `author` field is optional and not displayed since this is a personal blog.
-
-## Social Media Sharing
-
-The blog includes built-in social media sharing buttons for:
-- X (Twitter)
-- Facebook  
-- LinkedIn
-- Reddit
-- WhatsApp
-- Telegram
-
-Sharing links are automatically generated with the post title and URL.
-
-## Customization
-
-### Styling
-- Modify `src/style.css` for global styles
-- Update `tailwind.config.js` for TailwindCSS customization
-- Component styles are scoped within each Vue file
-
-### Blog Configuration
-- Update blog title and description in `src/views/Home.vue`
-- Modify social sharing platforms in `src/views/BlogPost.vue`
-- Customize markdown parsing in `src/utils/blog.js`
-
-## Technologies Used
-
-- **Vue.js 3** - Progressive JavaScript framework
-- **Vite** - Fast build tool and development server
-- **TailwindCSS** - Utility-first CSS framework
-- **Vue Router 4** - Official router for Vue.js
-- **Marked** - Markdown parser and compiler
-- **Gray Matter** - Front matter parser
-- **Docker** - Containerization for easy deployment
-- **Nginx** - High-performance web server
-
-## Deployment
-
-### Quick Deploy with Docker
-
-```bash
-# Build and run with Docker Compose
-npm run docker:up
-
-# Or manually
-npm run docker:build
-npm run docker:run
-```
-
-Access at: http://localhost:8080
-
-### Production Platforms
-
-This blog can be deployed to:
-- **AWS ECS/Fargate** - Container orchestration
-- **Google Cloud Run** - Serverless containers
-- **Azure Container Instances** - Quick container deployment
-- **DigitalOcean App Platform** - Simple PaaS
-- **Any VPS** - Using Docker or static files
-
-See [docs/DOCKER.md](docs/DOCKER.md) for detailed deployment guides.
-
-## License
-
-MIT License - feel free to use this project for your own blog!
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+**This is a personal blog repository.** Contributions are limited to:
 
-## Support
+- ✅ Typo fixes
+- ✅ Grammar corrections
+- ✅ Bug fixes (technical issues only)
+- ✅ Documentation improvements
 
-If you encounter any issues or have questions, please open an issue on the repository.
+**Not accepted:**
+- ❌ New blog posts
+- ❌ Design/style changes
+- ❌ Structural changes
+- ❌ Feature additions
+- ❌ Content suggestions
+
+For typos or bugs, please open an issue or submit a small pull request.
+
+## License
+
+MIT
