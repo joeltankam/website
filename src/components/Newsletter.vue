@@ -31,18 +31,6 @@
 
         <form @submit.prevent="handleSubmit" class="space-y-2">
           <div class="flex gap-2">
-            <div v-if="collectName" class="flex-1">
-              <input
-                id="newsletter-name"
-                v-model="formData.name"
-                type="text"
-                :required="collectName"
-                placeholder="Name"
-                class="w-full px-3 py-2 border border-primary-200 rounded-lg focus:ring-1 focus:ring-primary-500 focus:border-primary-400 outline-none text-sm transition-colors"
-                :disabled="isSubmitting"
-              />
-            </div>
-            
             <div class="flex-1">
               <input
                 id="newsletter-email"
@@ -94,9 +82,6 @@ interface Props {
   buttonText?: string
   successMessage?: string
   privacyText?: string
-  collectName?: boolean
-  provider?: 'mailchimp' | 'convertkit' | 'custom'
-  apiEndpoint?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -104,14 +89,10 @@ const props = withDefaults(defineProps<Props>(), {
   description: 'Get the latest articles and insights delivered straight to your inbox. No spam, unsubscribe anytime.',
   buttonText: 'Subscribe',
   successMessage: 'Thank you for subscribing!',
-  privacyText: 'We respect your privacy. Read our',
-  collectName: true,
-  provider: 'custom',
-  apiEndpoint: '/api/newsletter/subscribe'
+  privacyText: 'We respect your privacy. Read our'
 })
 
 const formData = reactive({
-  name: '',
   email: ''
 })
 
@@ -124,50 +105,35 @@ const handleSubmit = async () => {
   errorMessage.value = ''
 
   try {
-    // Custom API endpoint
-    if (props.provider === 'custom') {
-      const response = await fetch(props.apiEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          timestamp: new Date().toISOString()
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error('Subscription failed. Please try again.')
-      }
-    }
+    // Buttondown API endpoint
+    // Note: This requires BUTTONDOWN_API_KEY to be set
+    // For now, we'll use the embedded form approach which doesn't require API key
     
-    // Mailchimp integration
-    else if (props.provider === 'mailchimp') {
-      // Implement Mailchimp API call here
-      if (import.meta.env.DEV) {
-        console.log('Mailchimp subscription:', formData)
-      }
-    }
+    // Use Buttondown's form submission endpoint
+    const formElement = document.createElement('form')
+    formElement.action = 'https://buttondown.email/api/emails/embed-subscribe/joeltankam'
+    formElement.method = 'post'
+    formElement.target = '_blank'
     
-    // ConvertKit integration
-    else if (props.provider === 'convertkit') {
-      // Implement ConvertKit API call here
-      if (import.meta.env.DEV) {
-        console.log('ConvertKit subscription:', formData)
-      }
-    }
+    const emailInput = document.createElement('input')
+    emailInput.type = 'email'
+    emailInput.name = 'email'
+    emailInput.value = formData.email
+    formElement.appendChild(emailInput)
+    
+    // Submit the form
+    document.body.appendChild(formElement)
+    formElement.submit()
+    document.body.removeChild(formElement)
 
     // Success
     isSuccess.value = true
-    formData.name = ''
     formData.email = ''
     
     // Track conversion (if analytics is set up)
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'newsletter_signup', {
-        method: props.provider
+        method: 'buttondown'
       })
     }
   } catch (error) {

@@ -10,7 +10,7 @@ A modern blog website built with Vue.js and TailwindCSS v4 that publishes blog p
 - 🚀 **Fast Performance**: Built with Vite for optimal performance
 - 🔗 **Social Media Sharing**: Share posts on X (Twitter), Facebook, LinkedIn, Reddit, WhatsApp, and Telegram
 - 💬 **Comments System**: GitHub Discussions-powered comments (Giscus)
-- 📧 **Newsletter Integration**: Email subscription with multiple provider support (Mailchimp, ConvertKit, custom)
+- 📧 **Newsletter Integration**: Email subscription with Buttondown (supports RSS-to-email automation)
 - 📡 **RSS & Atom Feeds**: Automatic feed generation for blog subscribers
 - 🧭 **Vue Router**: Clean URL routing for blog posts
 - 🔍 **Advanced SEO**: Comprehensive search engine optimization
@@ -142,14 +142,18 @@ For detailed instructions, see [docs/COMMENTS.md](docs/COMMENTS.md)
 
 ### Newsletter Setup
 
-This blog includes a newsletter subscription system. To enable:
+The blog includes a newsletter subscription component using Buttondown:
 
-1. Choose an email provider (Mailchimp, ConvertKit, Buttondown, or custom)
-2. Get your API credentials from the provider
-3. Update `src/components/Newsletter.vue` with your configuration
-4. Configure your email automation (welcome email, etc.)
+1. **Create a Buttondown account** at https://buttondown.email (free)
+2. **Enable RSS-to-Email** in Buttondown settings (Settings → RSS)
+3. **Update your username** in `src/components/Newsletter.vue` if different from `joeltankam`
+4. **Optional**: Customize the newsletter text using component props
 
-For detailed instructions, see [docs/NEWSLETTER.md](docs/NEWSLETTER.md)
+The component is pre-configured and ready to use. Subscribers will automatically receive emails when you publish new posts.
+
+For detailed instructions, see:
+- **Quick Setup**: [docs/NEWSLETTER-QUICKSTART.md](docs/NEWSLETTER-QUICKSTART.md)
+- **Full Documentation**: [docs/NEWSLETTER.md](docs/NEWSLETTER.md)
 
 ### RSS Feeds
 

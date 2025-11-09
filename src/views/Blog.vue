@@ -323,7 +323,7 @@
           <div class="mt-12">
             <Newsletter 
               title="Stay Updated"
-              :description="`Subscribe to get ${siteConfig.description.toLowerCase()} delivered to your inbox.`"
+              :description="`Get notified when I publish new posts.`"
             />
             
             <!-- RSS Feed Link -->

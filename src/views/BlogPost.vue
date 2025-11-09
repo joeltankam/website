@@ -152,7 +152,7 @@
       <div class="mt-12">
         <Newsletter 
           title="Enjoyed this article?"
-          description="Subscribe to get notified when I publish new content on software engineering, web development, and technology."
+          description="Subscribe to get notified when I publish new posts."
         />
       </div>
     </main>
