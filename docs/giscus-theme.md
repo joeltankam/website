@@ -65,21 +65,6 @@ Full Giscus variable reference: https://github.com/giscus/giscus
 
 See [`giscus-theme.css`](../public/giscus-theme.css) for complete variable list (~150 variables).
 
-## Testing
-
-**Development**:
-```bash
-npm run dev  # Uses 'light' theme (localhost fallback)
-```
-
-**Production build locally**:
-```bash
-npm run build
-npm run preview  # Serves at :4173 with custom theme
-```
-
-**Production**:
-Deploy and verify custom theme loads from same domain.
 
 ## Platform Comparison
 
