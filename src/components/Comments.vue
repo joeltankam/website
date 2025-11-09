@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { siteConfig } from '../../site.config'
 
 interface Props {
   theme?: 'light' | 'dark' | 'auto' | 'custom'
@@ -49,7 +50,7 @@ const loadGiscus = () => {
 
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
-  script.setAttribute('data-repo', 'joeltankam/website')
+  script.setAttribute('data-repo', `${siteConfig.social.github}/website`)
   script.setAttribute('data-repo-id', 'R_kgDOQQzxyQ')
   script.setAttribute('data-category', 'Blog Comments')
   script.setAttribute('data-category-id', 'DIC_kwDOQQzxyc4Cxmns')
