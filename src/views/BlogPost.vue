@@ -179,6 +179,41 @@ import html from 'highlight.js/lib/languages/xml'
 import json from 'highlight.js/lib/languages/json'
 import markdown from 'highlight.js/lib/languages/markdown'
 import 'highlight.js/styles/github-dark.css'
+import mermaid from 'mermaid'
+
+// Initialize Mermaid with custom theme matching website colors
+mermaid.initialize({ 
+  startOnLoad: false,
+  theme: 'base',
+  themeVariables: {
+    primaryColor: '#3b82f6',        // primary-500 (blue)
+    primaryTextColor: '#fff',
+    primaryBorderColor: '#2563eb',  // primary-600
+    lineColor: '#60a5fa',           // primary-400
+    secondaryColor: '#6366f1',      // secondary-500 (indigo)
+    tertiaryColor: '#dbeafe',       // primary-100
+    background: '#ffffff',
+    mainBkg: '#eff6ff',             // primary-50
+    secondBkg: '#eef2ff',           // secondary-50
+    textColor: '#1f2937',           // gray-800
+    border1: '#bfdbfe',             // primary-200
+    border2: '#c7d2fe',             // secondary-200
+    note: '#eff6ff',
+    noteBkgColor: '#dbeafe',
+    noteTextColor: '#1e40af',       // primary-800
+    noteBorderColor: '#2563eb',     // primary-600
+    arrowheadColor: '#2563eb',
+    fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+    fontSize: '18px'
+  },
+  securityLevel: 'loose',
+  flowchart: {
+    useMaxWidth: true,
+    htmlLabels: true,
+    curve: 'monotoneY',
+    padding: 20
+  }
+})
 
 // Register languages
 hljs.registerLanguage('javascript', javascript)
@@ -349,6 +384,38 @@ const applyHighlighting = () => {
   })
 }
 
+const renderMermaidDiagrams = async () => {
+  if (!contentRef.value) return
+  
+  const mermaidBlocks = contentRef.value.querySelectorAll('pre code.language-mermaid')
+  
+  for (let i = 0; i < mermaidBlocks.length; i++) {
+    const block = mermaidBlocks[i]
+    const pre = block.parentElement
+    if (!pre) continue
+    
+    const code = block.textContent || ''
+    const id = `mermaid-${Date.now()}-${i}`
+    
+    const container = document.createElement('div')
+    container.className = 'mermaid-container my-8 w-full'
+    container.innerHTML = `<div id="${id}" class="mermaid">${code}</div>`
+    
+    pre.replaceWith(container)
+  }
+  
+  // Render all mermaid diagrams
+  if (mermaidBlocks.length > 0) {
+    try {
+      await mermaid.run({
+        querySelector: '.mermaid'
+      })
+    } catch (error) {
+      console.error('Mermaid rendering error:', error)
+    }
+  }
+}
+
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
   return date.toLocaleDateString('en-US', {
@@ -386,6 +453,7 @@ watch(post, async () => {
   if (post.value) {
     await nextTick()
     applyHighlighting()
+    await renderMermaidDiagrams()
   }
 })
 </script>
@@ -404,6 +472,44 @@ watch(post, async () => {
   padding: 1.25rem;
   border-radius: 0.5rem;
   background: var(--color-gray-800) !important;
+}
+
+/* Mermaid diagram container */
+.mermaid-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mermaid-container :deep(.mermaid) {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mermaid-container :deep(svg) {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+/* Mermaid styling - rounded corners and bold text */
+.mermaid-container :deep(.node rect),
+.mermaid-container :deep(.node circle),
+.mermaid-container :deep(.node ellipse),
+.mermaid-container :deep(.node polygon) {
+  rx: 8px;
+  ry: 8px;
+}
+
+.mermaid-container :deep(.nodeLabel),
+.mermaid-container :deep(.edgeLabel) {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.mermaid-container :deep(.label) {
+  font-weight: 600;
 }
 </style>
 
