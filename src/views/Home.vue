@@ -15,12 +15,12 @@
             </h1>
             <p class="text-xl text-gray-600 leading-relaxed mb-6">
               I'm a Software Engineer currently based in <span class="text-primary-600 font-semibold">Paris, France</span>.
-              I love building scalable systems and developer tools, with a little passion for the .NET ecosystem.
-              I've also spent some good days with JavaScript/TypeScript environments (even though I have a preference for strongly typed languages).
-              On my blog, I write about software engineering, technology, and whatever comes across my mind.
+              I mostly work on scalable systems and developer tools, with a little passion for the .NET ecosystem.
+              I've also spent some time raging on JavaScript quirks and promoting TypeScript supremacy.
+              On my blog, I write about software engineering, technology, and all the good stuff — hopefully you'll find my posts interesting.
             </p>
             <p class="text-lg text-gray-600 mb-6">
-              When I'm not coding, you'll find me traveling, exploring museums, reading books, watching cycling races and football (soccer) games, 
+              When I'm not coding, which is actually very often, you'll find me solo traveling, exploring museums, reading books, watching cycling races and football games, 
               or diving into whichever passion I have at the moment.
             </p>
             <div class="mb-8 flex gap-4">

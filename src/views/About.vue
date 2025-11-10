@@ -46,19 +46,28 @@
           />
           
           <p>
-            Hi, I'm <span class="font-bold text-xl text-primary-600">{{ siteConfig.author }}</span> — a <span class="font-semibold text-gray-800">curious and multilingual individual</span> who has been passionate about technology and exploration since a young age. Born in <span class="font-semibold text-gray-800">Cameroon</span>, I left at 14 after graduating high school to pursue my studies in <span class="font-semibold text-gray-800">Morocco</span>, where I would spend the next several years discovering a new culture and building the foundations of my future.
+            Hi, I'm <span class="font-bold text-xl text-primary-600">{{ siteConfig.author }}</span> — a random dude who's been quite passionate about technology since a young age.
+            Born in <span class="font-bold">Cameroon</span>, I left at 14 after graduating high school to study in <span class="font-bold">Morocco</span>, where I spent several years discovering the culture, and the years after that regretting never learning Arabic properly (actually, <a href="https://en.wikipedia.org/wiki/Moroccan_Arabic" target="_blank" class="text-gray-800 italic underline hover:text-primary-600">Darija</a>).
           </p>
           <p>
-            I've always been drawn to <span class="font-bold text-primary-600">solo traveling</span>, finding it to be one of the most enriching experiences. Over the years, I've explored many countries across <span class="font-semibold text-gray-800">Europe and the USA</span>, often planning my trips around <span class="font-semibold text-gray-800">museums and art galleries</span>. There's something magical about standing in front of a masterpiece or wandering through historical exhibitions — it's a big part of what I do when I travel.
+            Currently, I call <span class="font-bold text-primary-600">Paris, France</span> home, and I quite love the city.
+            Like 100% of "Parisians", according to my own data sources, I actually live in the suburbs of Paris, but I'm constantly amazed by the architecture and cultural richness of the inner city.
+            As a modern and respectable member of the human species, I spend a shameful amount of time doomscrolling, but from time to time you might find me <span class="font-semibold text-gray-800">reading books</span>, watching <span class="font-semibold text-gray-800">cycling races</span> (mainly nowadays, though I've been a longtime fan of <span class="font-semibold">football and basketball</span>), pretending I'll remember anything from the <span class="font-semibold text-gray-800">scientific documentaries</span> I'm watching, or trying to be less terrible at <span class="font-semibold text-gray-800">chess</span>.
           </p>
           <p>
-            Currently, I call <span class="font-bold text-primary-600">Paris, France</span> home, and I genuinely love this city. From its architecture to its cultural richness, Paris never ceases to inspire me. When I'm not working, you'll likely find me <span class="font-semibold text-gray-800">reading books</span> (I read quite a lot), watching <span class="font-semibold text-gray-800">cycling races</span> (mainly nowadays, though I've been a longtime fan of football and basketball), or indulging in my passion for <span class="font-bold text-primary-600">astronomy and chess</span>.
+            I'm a big-time <span class="font-semibold text-gray-800">solo traveler</span>, finding it to be one of the most enriching experiences.
+            Over the years, I've wandered across Europe and the USA, often planning my trips around <span class="font-semibold">museums and art galleries</span>, <span class="font-semibold">sightseeing</span> of all sorts, <span class="font-semibold">meeting strangers</span>, and trying local stuff.
+            I'm not exactly the guy who could tell you precisely which artist painted what, but there's something nice about standing in front of a beautiful artwork or wandering through historical exhibitions.
           </p>
           <p>
-            I also spent several years taking <span class="font-semibold text-gray-800">theater classes</span> and even had some performances in front of live audiences — an experience that taught me a lot about communication, presence, and stepping outside my comfort zone. It's these diverse interests and experiences that shape how I approach both life and work.
+            I also spent a some years taking <span class="font-semibold text-gray-800">theater classes</span> and even performed in front of live audiences — an experience that was supposed to teach me a lot about communication, presence, and stepping outside my comfort zone.
+            The result? I'm not sure, but it was fun!
           </p>
           <p>
-            On the professional side, I work as a <span class="font-semibold text-gray-800">software engineer and technical lead</span> with over <span class="font-bold text-primary-600">{{ yearsOfExperience }} years of experience</span> at <span class="font-bold text-primary-600">Société Générale Corporate & Investment Banking</span>. I started my career in <span class="font-semibold text-gray-800">Morocco</span>, where I worked for two years before being relocated to <span class="font-semibold text-gray-800">Paris</span>. I specialize in the <span class="font-semibold text-gray-800">.NET ecosystem</span>, focusing on building scalable systems and tools that make developers' lives easier. I graduated from the <span class="font-bold text-primary-600">Mohammadia School of Engineers in Morocco</span> with a Master of Engineering in Computer Science.
+            On the professional side, I work as a <span class="font-bold text-primary-600">software engineer and technical lead</span> with something like <span class="font-semibold text-gray-800">{{ yearsOfExperience }}+ years of experience</span>.
+            I started my career in <span class="font-semibold">Morocco</span>, where I worked for two years before being relocated to <span class="font-semibold">Paris</span>.
+            I've worked with various programming languages, starting with <span class="font-semibold">Pascal</span> (good old days) and continuing with <span class="font-semibold">JavaScript</span> (jQuery remains the pinnacle of web development), <span class="font-semibold">PHP</span> (not much better duos than MySQL and phpMyAdmin), <span class="font-semibold">Python</span> (no comment), <span class="font-semibold">Java</span> (the inferior C#), and now mostly the <span class="font-semibold">.NET ecosystem</span>.
+            I mostly work on building scalable systems and developer tools.
           </p>
         </div>
       </div>
@@ -72,40 +81,31 @@
             <h3 class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2">Proficient With</h3>
             <div class="flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">.NET Ecosystem</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">C#</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">ASP.NET Core</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">MSBuild</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">PowerShell</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">CI/CD</span>
               <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">Software Architecture</span>
-              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">Git</span>
+              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">DevOps</span>
+              <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-200">Distributed Systems</span>
             </div>
           </div>
 
           <div>
             <h3 class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2">Familiar With</h3>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Distributed Computing</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Kubernetes</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Azure</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Docker</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Linux</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Ansible</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Monitoring & Alerting</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Cloud Platforms</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Monitoring and Observability</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Infrastructure as Code</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">QA & Release Management</span>
             </div>
           </div>
 
           <div>
             <h3 class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2">Experience With</h3>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript/TypeScript</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Vue.js</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Database Management</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">JavaScript/TypeScript Ecosystem</span>
               <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">HTML5/CSS3</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Python</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Django</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">PHP</span>
-              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Laravel</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">UI/UX</span>
               <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Java</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">Python</span>
             </div>
           </div>
         </div>
@@ -157,49 +157,13 @@
             </div>
           </div>
 
-          <!-- 2020-2023 Role -->
+          <!-- 2018-2023 Role -->
           <div class="border-l-4 border-gray-300 pl-6">
             <h3 class="text-lg font-bold text-gray-800">R&D Software Engineer</h3>
-            <p class="text-gray-600 font-medium mb-2">Société Générale CIB • Nov 2020 - Dec 2023 • Paris, France</p>
+            <p class="text-gray-600 font-medium mb-2">Société Générale CIB • Aug 2018 - Dec 2023 • Casablanca, Morocco - Paris, France</p>
             <p class="text-gray-700 text-sm">
               Led .NET Core migration in a vast ecosystem. Project manager and technical lead, developed CI/CD and efficiency tools, speaker on various .NET in-depth topics, mentorship and new technology monitoring.
             </p>
-          </div>
-
-          <!-- 2018-2020 Morocco -->
-          <div class="border-l-4 border-gray-300 pl-6">
-            <h3 class="text-lg font-bold text-gray-800">R&D Software Engineer</h3>
-            <p class="text-gray-600 font-medium mb-2">Société Générale ATS • Aug 2018 - Nov 2020 • Casablanca, Morocco</p>
-            <p class="text-gray-700 text-sm">
-              Built and maintained productivity tools and frameworks for developers. Project manager and technical lead of .NET Core migration, monitored and improved software factory, provided technical support.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Values & Approach -->
-      <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 lg:p-12 shadow-2xl border border-primary-100 mb-8">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">My Approach & Interests</h2>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-lg font-semibold text-primary-600 mb-2">Leadership & Mentorship</h3>
-            <p class="text-gray-600">Great teams are built through guidance and support. Empowering others and sharing knowledge creates strong, collaborative engineering cultures where everyone can thrive.</p>
-          </div>
-
-          <div>
-            <h3 class="text-lg font-semibold text-primary-600 mb-2">Attention to Detail</h3>
-            <p class="text-gray-600">Quality matters at every level. Clean, maintainable code and high standards across architecture and implementation ensure long-term success and sustainability.</p>
-          </div>
-
-          <div>
-            <h3 class="text-lg font-semibold text-primary-600 mb-2">Project Management</h3>
-            <p class="text-gray-600">Complex projects succeed through planning and clear communication, while maintaining flexibility to adapt. Human relations are at the heart of effective delivery—balancing quality, timelines, and team morale creates sustainable success.</p>
-          </div>
-
-          <div>
-            <h3 class="text-lg font-semibold text-primary-600 mb-2">Knowledge Sharing</h3>
-            <p class="text-gray-600">Technology thrives on collaboration. Technical talks, documentation, and mentoring help teams stay current and foster continuous improvement across organizations.</p>
           </div>
         </div>
       </div>
@@ -242,7 +206,7 @@
         </div>
 
         <div class="mt-8 pt-8 border-t border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-800 mb-3">Languages</h3>
+          <h3 class="text-lg font-bold text-gray-800 mb-3">Languages</h3>
           <div class="flex gap-6">
             <div>
               <span class="font-medium text-gray-700">French:</span>
@@ -250,7 +214,7 @@
             </div>
             <div>
               <span class="font-medium text-gray-700">English:</span>
-              <span class="text-primary-600 ml-2">Mastery</span>
+              <span class="text-primary-600 ml-2">Fluent</span><em class="text-gray-600 ml-1">(I think)</em>
             </div>
           </div>
         </div>
