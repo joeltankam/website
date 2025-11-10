@@ -38,7 +38,7 @@
         <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
           <!-- Profile Picture - floated left -->
           <img 
-            src="../assets/me.jpg" 
+            src="/assets/images/me.jpg" 
             :alt="`${siteConfig.author} - Software Engineer based in Paris, France`"
             loading="lazy"
             @click="showZoomedImage = true"
@@ -264,7 +264,7 @@
       class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 cursor-zoom-out"
     >
       <img 
-        src="../assets/me.jpg" 
+        src="/assets/images/me.jpg" 
         :alt="`${siteConfig.author} - Software Engineer based in Paris, France`"
         loading="eager"
         class="max-w-full max-h-full rounded-2xl shadow-2xl"

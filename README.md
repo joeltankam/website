@@ -1,6 +1,6 @@
 # Personal Website
 
-Personal website built with Vue.js 3, TailwindCSS v4, and TypeScript and hosted at https://joeltankam.com
+Personal website built with Vue.js 3, TailwindCSS v4, and TypeScript.
 
 ## Development Setup
 

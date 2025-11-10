@@ -7,7 +7,7 @@ tags: ["vue", "typescript", "web-development", "best-practices"]
 
 # Building Modern Web Applications with Vue and TypeScript
 
-![Hero Image](/images/posts/sample-post-hero.svg)
+![Hero Image](/assets/posts/sample-post-hero.svg)
 
 Modern web development has evolved significantly over the past few years. With frameworks like Vue.js 3 and the power of TypeScript, building scalable and maintainable applications has become more accessible than ever.
 
@@ -58,7 +58,7 @@ const activeUsers = computed(() =>
 
 ## Styling with TailwindCSS
 
-![Code Example](/images/posts/sample-post-hero.svg)
+![Code Example](/assets/posts/sample-post-hero.svg)
 
 TailwindCSS v4 brings CSS-first configuration and improved performance. The new `@theme` directive makes customization intuitive:
 
