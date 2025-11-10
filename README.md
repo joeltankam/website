@@ -1,6 +1,6 @@
-# Personal Blog Repository
+# Personal Website
 
-Personal blog built with Vue.js 3, TailwindCSS v4, and TypeScript.
+Personal website built with Vue.js 3, TailwindCSS v4, and TypeScript and hosted at https://joeltankam.com
 
 ## Development Setup
 
@@ -33,34 +33,10 @@ npm run preview
 
 ## Deployment
 
-**Cloudflare Pages** (recommended):
+**Cloudflare Pages**:
 - Automated deployment via GitHub Actions
 - Push to `master` → auto-deploy
 - See `docs/cloudflare-pages.md` for setup
-
-## Configuration
-
-- **Hostname**: Set in `site.config.ts` or via `VITE_HOSTNAME` environment variable
-- **Comments**: Configure Giscus in `src/components/Comments.vue` - see `docs/comments.md`
-- **Newsletter**: Buttondown username in `src/components/Newsletter.vue` - see `docs/newsletter.md`
-- **RSS Feeds**: Auto-generated at `/rss.xml` and `/atom.xml` - see `docs/rss.md`
-- **Theme**: TailwindCSS v4 config in `tailwind.css` - see `docs/tailwind-v4-migration.md`
-
-Full documentation available in `docs/` folder.
-
-## Project Structure
-
-```
-src/
-├── components/     # Vue components
-├── views/          # Page views
-├── router/         # Vue Router config
-├── utils/          # Utilities
-├── posts/          # Markdown blog posts
-└── style.css       # Global styles
-docs/               # Documentation
-public/             # Static assets
-```
 
 ## Contributing
 
@@ -69,7 +45,6 @@ public/             # Static assets
 - ✅ Typo fixes
 - ✅ Grammar corrections
 - ✅ Bug fixes (technical issues only)
-- ✅ Documentation improvements
 
 **Not accepted:**
 - ❌ New blog posts
@@ -79,7 +54,3 @@ public/             # Static assets
 - ❌ Content suggestions
 
 For typos or bugs, please open an issue or submit a small pull request.
-
-## License
-
-MIT
