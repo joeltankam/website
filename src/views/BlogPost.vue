@@ -144,7 +144,7 @@
 
         <!-- Comments Section -->
         <div class="px-8 lg:px-12 pb-8">
-          <Comments theme="custom" />
+          <Comments theme="light" />
         </div>
       </article>
 

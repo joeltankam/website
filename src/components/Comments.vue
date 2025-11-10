@@ -13,7 +13,7 @@ import { useRoute } from 'vue-router'
 import { siteConfig } from '../../site.config'
 
 interface Props {
-  theme?: 'light' | 'dark' | 'auto' | 'custom'
+  theme?: 'light' | 'dark' | 'auto'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -22,25 +22,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const route = useRoute()
 const commentsContainer = ref<HTMLElement | null>(null)
-
-const getTheme = () => {
-  // Use custom CSS theme if theme is set to 'custom'
-  if (props.theme === 'custom') {
-    // In development, use 'light' theme to avoid CORS issues
-    // In production, use custom CSS theme from your domain
-    const isLocalhost = window.location.hostname === 'localhost' || 
-                        window.location.hostname === '127.0.0.1'
-    
-    if (isLocalhost) {
-      return 'light'
-    }
-    
-    return `${window.location.origin}/giscus-theme.css`
-  }
-  
-  // Otherwise use the built-in Giscus themes
-  return props.theme
-}
 
 const loadGiscus = () => {
   if (!commentsContainer.value) return
@@ -59,7 +40,7 @@ const loadGiscus = () => {
   script.setAttribute('data-reactions-enabled', '1')
   script.setAttribute('data-emit-metadata', '0')
   script.setAttribute('data-input-position', 'bottom')
-  script.setAttribute('data-theme', getTheme())
+  script.setAttribute('data-theme', props.theme)
   script.setAttribute('data-lang', 'en')
   script.setAttribute('data-loading', 'lazy')
   script.crossOrigin = 'anonymous'
