@@ -31,16 +31,12 @@ npm run build
 npm run preview
 ```
 
-### Docker
+## Deployment
 
-```bash
-# Build and run with Docker Compose
-docker-compose up -d
-
-# Access at http://localhost:8080
-```
-
-See `docs/docker.md` for deployment options.
+**Cloudflare Pages** (recommended):
+- Automated deployment via GitHub Actions
+- Push to `master` → auto-deploy
+- See `docs/cloudflare-pages.md` for setup
 
 ## Configuration
 
