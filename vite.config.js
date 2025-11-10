@@ -29,5 +29,31 @@ export default defineConfig({
         global: 'globalThis'
       }
     }
+  },
+  build: {
+    // Production optimizations
+    target: 'es2020',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug']
+      }
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor code
+          'vue-vendor': ['vue', 'vue-router'],
+          'markdown': ['marked', 'gray-matter'],
+          'syntax': ['highlight.js', 'mermaid']
+        }
+      }
+    },
+    // Enable gzip compression hints
+    reportCompressedSize: true,
+    // Chunk size warning limit
+    chunkSizeWarningLimit: 1000
   }
 })
