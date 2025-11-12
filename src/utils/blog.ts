@@ -1,5 +1,6 @@
 import { marked } from 'marked'
 import matter from 'gray-matter'
+import { siteConfig } from '../../site.config'
 
 // Configure marked options
 marked.setOptions({
@@ -100,14 +101,12 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 export function generateShareUrl(platform: string, post: BlogPost, baseUrl: string = window.location.origin): string {
   const url = `${baseUrl}/post/${post.slug}`
   const title = post.frontmatter.title
+  const blueskyHandle = siteConfig.social.bluesky
   
   const shareUrls: Record<string, string> = {
-    twitter: `https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    reddit: `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
-    telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`
+    twitter: `https://x.com/intent/tweet?text=${encodeURIComponent(`Check out this article: ${title}`)}&url=${encodeURIComponent(url)}`,
+    bluesky: `https://bsky.app/intent/compose?text=${encodeURIComponent(`Check out this article by @${blueskyHandle}: ${title}\n\n${url}`)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
   }
   
   return shareUrls[platform] || url

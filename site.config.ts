@@ -30,7 +30,8 @@ export const siteConfig = {
   social: {
     twitter: 'joeltankam',
     github: 'joeltankam',
-    linkedin: 'joeltankam'
+    linkedin: 'joeltankam',
+    bluesky: 'joeltankam.bsky.social'
   },
   
   // Newsletter configuration
