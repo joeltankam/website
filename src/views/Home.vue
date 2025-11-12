@@ -61,6 +61,7 @@
               <span class="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">@{{ siteConfig.social.github }}</span>
             </a>
             
+            <!--
             <a :href="`https://x.com/${siteConfig.social.twitter}`" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-primary-200 rounded-xl hover:border-black hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 text-gray-700 group-hover:text-black transition-colors">
@@ -69,6 +70,7 @@
               </svg>
               <span class="text-gray-700 font-medium group-hover:text-black transition-colors">@{{ siteConfig.social.twitter }}</span>
             </a>
+            -->
             
             <a :href="`https://www.linkedin.com/in/${siteConfig.social.linkedin}/`" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 border-2 border-primary-200 rounded-xl hover:border-primary-600 hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg group">
