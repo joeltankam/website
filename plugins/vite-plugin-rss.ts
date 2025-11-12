@@ -2,7 +2,7 @@ import { Plugin } from 'vite'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { siteConfig } from './site.config.ts'
+import { siteConfig } from '../site.config.ts'
 
 interface RssItem {
   title: string
