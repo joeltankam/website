@@ -80,7 +80,7 @@
             </div>
             
             <h1 
-              class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6 leading-tight"
+              class="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-6 leading-tight"
               itemprop="headline"
             >
               {{ post.frontmatter.title }}

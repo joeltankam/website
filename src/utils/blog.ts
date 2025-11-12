@@ -29,14 +29,16 @@ export interface PostFrontmatter {
 
 export function parseMarkdown(content: string): { frontmatter: PostFrontmatter; html: string } {
   const { data, content: markdown } = matter(content)
-  const html = marked(markdown) as string
+  let html = marked(markdown) as string
+  
+  // Remove the first <h1> tag if it exists (since we display title from frontmatter)
+  html = html.replace(/^<h1[^>]*>.*?<\/h1>\s*/i, '')
+  
   return {
     frontmatter: data as PostFrontmatter,
     html
   }
 }
-
-
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
