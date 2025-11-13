@@ -20,38 +20,43 @@ interface RssPluginOptions {
 export default function rssPlugin(options: RssPluginOptions): Plugin {
   return {
     name: 'vite-plugin-rss',
-    closeBundle() {
-      generateRssFeed(options.hostname)
+    async closeBundle() {
+      await generateRssFeed(options.hostname)
     }
   }
 }
 
-function generateRssFeed(hostname: string): void {
-  const postsDirectory = path.join(process.cwd(), 'src', 'posts')
+async function getPostsFromFileSystem(hostname: string): Promise<Array<RssItem>> {
+  try {
+    const postsDir = path.resolve(__dirname, '../src/posts')
+    const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.md'))
+    
+    const posts = files.map(file => {
+      const filePath = path.join(postsDir, file)
+      const content = fs.readFileSync(filePath, 'utf-8')
+      const { data } = matter(content)
+      const slug = file.replace(/\.md$/, '')
+      return {
+        title: data.title || 'Untitled',
+        link: `${hostname}/post/${slug}`,
+        description: data.excerpt || data.description || '',
+        pubDate: new Date(data.date).toUTCString(),
+        guid: `${hostname}/post/${slug}`,
+        categories: data.tags || []
+      }
+    })
+    
+    return posts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+  } catch (error) {
+    console.error('Error reading posts:', error)
+    return []
+  }
+}
+
+async function generateRssFeed(hostname: string): Promise<void> {
+  
+  const posts = await getPostsFromFileSystem(hostname)
   const outDir = path.join(process.cwd(), 'dist')
-  
-  // Read all markdown files
-  const files = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'))
-  
-  const posts: RssItem[] = files.map(filename => {
-    const filePath = path.join(postsDirectory, filename)
-    const fileContents = fs.readFileSync(filePath, 'utf8')
-    const { data } = matter(fileContents)
-    
-    const slug = filename.replace(/\.md$/, '')
-    
-    return {
-      title: data.title || 'Untitled',
-      link: `${hostname}/post/${slug}`,
-      description: data.excerpt || data.description || '',
-      pubDate: new Date(data.date).toUTCString(),
-      guid: `${hostname}/post/${slug}`,
-      categories: data.tags || []
-    }
-  })
-  
-  // Sort by date (newest first)
-  posts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
   
   // Generate RSS XML
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>

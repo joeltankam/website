@@ -16,9 +16,8 @@ interface SitemapPage {
 }
 
 async function getPostsFromFileSystem(): Promise<Array<{ slug: string; frontmatter: any }>> {
-  const postsDir = resolve(__dirname, 'src/posts')
-  
   try {
+    const postsDir = resolve(__dirname, '../src/posts')
     const files = readdirSync(postsDir).filter(file => file.endsWith('.md'))
     
     const posts = files.map(file => {
